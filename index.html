@@ -156,6 +156,56 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/posts/3965341360/">
+                记一次RedHat文件夹访问权限设定
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-07-14</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>家里有闲置的电脑，于是我给他装上了RedHat 9.4，准备将一些资料存到上面，于是我装Samba服务将磁盘共享出来，又不想直接使用root权限进行登录，于是做了一个其他账户;<br>这一系列做完后，又将Hexo迁移到Linux上，于是我在Samba共享的磁盘下面给出了一个文件夹用于hexo，比较Windows写MD比较顺手嘛。本着不同账户管理的思想，于是我又建了一个Hexo账户,用于正对Hexo的部署和生成，此时就发现不同账户生成的文件夹和文件,归属权和操作权在不同终端或者Windows资源管理器上没权限操作,于是我就给文件夹指定了特地账户可以完全访问的权限。</p>
+<h2 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h2><p>为了实现在 Red Hat 系统上自动给指定文件夹及其所有子文件夹和文件设置两个特定账户的完全访问权限（读、写、执行），可以使用 bash 脚本结合 <code>chown</code>、<code>chmod</code> 和 <code>setfacl</code> 命令。<br>注意，<code>chown</code> 命令用于改变文件或目录的所有者，而完全访问权限（读、写、执行）通常通过调整权限（使用 <code>chmod</code>）和访问控制列表（使用 <code>setfacl</code>）来实现。<br>以下是三个命令的一些基本用法;</p>
+<h3 id="chown-（改变某个文件或目录的所有者和所属的组）"><a href="#chown-（改变某个文件或目录的所有者和所属的组）" class="headerlink" title="chown （改变某个文件或目录的所有者和所属的组）"></a>chown （改变某个文件或目录的所有者和所属的组）</h3><p><code>chown</code> （<code>change owner</code>），其功能是命令改变某个文件或目录的所有者和所属的组，该命令可以向某个用户授权，使该用户变成指定文件的所有者或者改变文件所属的组。</p>
+<h3 id="chmod-（变更文件或目录的权限）"><a href="#chmod-（变更文件或目录的权限）" class="headerlink" title="chmod （变更文件或目录的权限）"></a>chmod （变更文件或目录的权限）</h3><p><code>chmod</code>（<code>change mode</code>），其功能是改变文件或目录权限的命令。默认只有文件的所有者和管理员可以设置文件权限，普通用户只能管理自己文件的权限属性。</p>
+<h3 id="setfacl-（精确的控制文件权限的分配）"><a href="#setfacl-（精确的控制文件权限的分配）" class="headerlink" title="setfacl （精确的控制文件权限的分配）"></a>setfacl （精确的控制文件权限的分配）</h3><p><code>setfacl</code>（<code>set file access control list</code> 即”设置文件访问控制列表“） 其功能是可以更加精确的控制文件权限的分配，比如让某一个用户对某一个文件具有某种权限。</p>
+<p>总的来说<code>setfacl</code>命令可以用来细分<code>linux</code>下的文件权限。<br>而<code>chmod</code>命令可以把文件权限分为u,g,o三个组，而<code>setfacl</code>可以对每一个文件或目录设置更精确的文件权限。<br>比如：让某一个用户对某一个文件具有某种权限。<br>这种独立于传统的u,g,o的rwx权限之外的具体权限设置叫<code>ACL</code>（<code>Access Control List</code>）</p>
+<p>ACL可以针对单一用户、单一文件或目录来进行r,w,x的权限控制，对于需要特殊权限的使用状况有一定帮助。<br>如，某一个文件，不让单一的某个用户访问。<br>使用<code>setfacl</code>前，要先确保你的系统支持 ACL（访问控制列表），这可以通过运行 <code>getfacl</code> 命令来检查。如果系统提示找不到该命令，你可能需要安装 <code>acl</code> 包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[hexo@sea-whales seawhales]$ getfacl</span><br><span class="line">Usage: getfacl [-aceEsRLPtpndvh] file ...</span><br><span class="line">Try `getfacl --<span class="built_in">help</span><span class="string">&#x27; for more information.</span></span><br></pre></td></tr></table></figure>
+<p>如果不支持可以执行以下命令,我这边是已经安装了所以没有过程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# yum install acl -y</span><br><span class="line">正在更新 Subscription Management 软件仓库。</span><br><span class="line">上次元数据过期检查：0:59:08 前，执行于 2024年07月14日 星期日 20时01分07秒。</span><br><span class="line">软件包 acl-2.3.1-4.el9.x86_64 已安装。</span><br><span class="line">依赖关系解决。</span><br><span class="line">无需任何处理。</span><br><span class="line">完毕！</span><br><span class="line">[root@sea-whales ~]#</span><br></pre></td></tr></table></figure>
+
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfacl -R -m u:<span class="string">&quot;hexo&quot;</span>:rwx <span class="string">&quot;/home/hexo&quot;</span></span><br></pre></td></tr></table></figure>
+<p>于是我就想如果有很多用户那就得执行很多一样的命令于是我就把他写成脚本，假设想让 <code>/path/to/directory</code> 目录及其所有子目录和文件对 <code>user1</code> 和 <code>user2</code> 拥有完全访问权限（即读、写、执行）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设定目标目录</span></span><br><span class="line">TARGET_DIR=<span class="string">&quot;/path/to/directory&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设定需要添加权限的用户</span></span><br><span class="line">USERS=(<span class="string">&quot;user1&quot;</span> <span class="string">&quot;user2&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置目录和文件的初始权限</span></span><br><span class="line"><span class="comment"># 例如，给所有者读写执行权限，给组和其他用户读执行权限</span></span><br><span class="line"><span class="comment"># 注意：你可能需要根据实际情况调整这些权限</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 <span class="string">&quot;<span class="variable">$TARGET_DIR</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历用户列表，为每个用户设置ACL</span></span><br><span class="line"><span class="keyword">for</span> USER <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;USERS[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">    <span class="comment"># 设置用户对目录的完全控制（rwx）</span></span><br><span class="line">    <span class="comment"># 注意：对于目录，通常需要执行权限来进入</span></span><br><span class="line">    setfacl -R -m u:<span class="string">&quot;<span class="variable">$USER</span>&quot;</span>:rwx <span class="string">&quot;<span class="variable">$TARGET_DIR</span>&quot;</span></span><br><span class="line">    <span class="comment"># 如果需要，你还可以设置默认ACL，以便新创建的文件和目录也继承这些权限</span></span><br><span class="line">    setfacl -R -d -m u:<span class="string">&quot;<span class="variable">$USER</span>&quot;</span>:rwx <span class="string">&quot;<span class="variable">$TARGET_DIR</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;权限设置完成，<span class="variable">$TARGET_DIR</span> 目录及其所有子目录和文件现在对 <span class="variable">$&#123;USERS[*]&#125;</span> 拥有完全访问权限。&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<ol>
+<li>脚本中的 <code>chmod -R 755 &quot;$TARGET_DIR&quot;</code> 设置了目录和文件的初始权限。你可能需要根据实际情况调整这些权限。</li>
+<li><code>setfacl -R -m u:&quot;$USER&quot;:rwx &quot;$TARGET_DIR&quot;</code> 命令给每个用户设置了对目录和文件的完全访问权限（读、写、执行）。<code>-R</code> 选项表示递归地应用到所有子目录和文件。</li>
+<li><code>setfacl -R -d -m u:&quot;$USER&quot;:rwx &quot;$TARGET_DIR&quot;</code> 命令设置了默认 ACL，这意呀着在 <code>$TARGET_DIR</code> 下新创建的文件和目录将自动继承这些 ACL 规则。</li>
+<li>请确保 <code>$TARGET_DIR</code> 和 <code>USERS</code> 数组中的值根据你的需求进行了正确的设置。</li>
+<li>运行此脚本可能需要 root 权限，因为修改文件系统的权限和 ACL 通常需要超级用户权限。</li>
+</ol>
+<p>保存此脚本到一个文件中，例如 <code>set_directory_permissions.sh</code>，然后通过运行 <code>chmod +x set_directory_permissions.sh</code> 使其可执行，最后以 root 用户身份执行它：<code>sudo ./set_directory_permissions.sh</code>。</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/posts/1856186068/">
                 MongoDB安装记录和错误解决
             </a>
@@ -171,7 +221,7 @@
 
     
         <div class="content">
-            <h1 id="MongoDB安装记录和错误解决"><a href="#MongoDB安装记录和错误解决" class="headerlink" title="MongoDB安装记录和错误解决"></a>MongoDB安装记录和错误解决</h1><p>我使用的是RedHat 9.4 安装Mongodb</p>
+            <p>我使用的是RedHat 9.4 安装Mongodb</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# <span class="built_in">cat</span> /etc/redhat-release</span><br><span class="line">Red Hat Enterprise Linux release 9.4 (Plow)</span><br></pre></td></tr></table></figure>
 <h2 id="1-MongoDB安装"><a href="#1-MongoDB安装" class="headerlink" title="1. MongoDB安装"></a>1. MongoDB安装</h2><p>Mongodb有以下几种安装方式：</p>
 <ol>
@@ -504,6 +554,10 @@
     <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
         <h2>Recent Posts</h2>
         <ul>
+            
+            <li>
+                <a class="footer-post" href="/posts/3965341360/">记一次RedHat文件夹访问权限设定</a>
+            </li>
             
             <li>
                 <a class="footer-post" href="/posts/1856186068/">MongoDB安装记录和错误解决</a>
