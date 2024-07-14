@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="树深时见鹿,溪午不闻钟~">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zephyr Lo">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="关键路径法简介"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="树深时见鹿,溪午不闻钟~" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Sea-Whales - 林深时见鹿，海蓝时见鲸"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>关键路径法简介 - Sea-Whales - 林深时见鹿，海蓝时见鲸</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/posts/192071107/">
+                关键路径法简介
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-07-14</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="关键路径法简介"><a href="#关键路径法简介" class="headerlink" title="关键路径法简介"></a>关键路径法简介</h2><p>一个大型工程或项目包括很多活动，关键路径是项目中时间最长的活动顺序，决定着可能的项目最短工期。</p>
+<p>关键路径法（Critical path method，CPM） 是一种基于进度网络模型的方法，用网络图表示各项活动之间的相互关系，获得在一定工期、成本、资源约束条件下的最优进度安排。</p>
+<p>关键路径法源于美国杜邦公司对于项目管理控制成本、减少工期的研究。1959年，Kelly 和 Walker 在论文 Critical Path Planning and Scheduling 中提出了关键路径法的基本原理和方法：计算所有活动的工期，确定其最早开始 ES 和最早结束 EF、最晚开始 LS 和最晚结束 LF 的时间，按照活动的相互关系形成顺序的网络逻辑 图，找到必须的最长路径即为关键路径。</p>
+<p>关键路径法将项目分解成为多个独立的活动并确定每个活动的工期，然后用逻辑关系（结束-开始、结束-结束、开始-开始和开始-结束）将活动连接。首先使用正推法（Forward pass），从起点开始向后计算，依次计算每个顶点（事件）的最早开始时间 ES；然后再使用逆推法（Backward pass），从终点开始向前计算，依次计算每个顶点（事件）的最迟结束时间 LF。进而可以求出每条边（工序）的最早结束时间 EF 和最迟开始时间 LS。最早开始时间 ES 和最晚开始时间 LS 相等的边，就是关键路径上的边，对应的工序是关键工序。</p>
+<ul>
+<li>ES：最早开始时间（Earliest Start），指某项活动能够开始的最早时间，取决于该项活动的所有紧前工作的结束时间，由顺推法计算 ES &#x3D; max{EF(preceding activities)}。</li>
+<li>EF：最早结束时间（Earliest Finish），指某项活动能够完成的最早时间。EF &#x3D; ES+DU， DU为该活动的持续时间。</li>
+<li>LF：最迟结束时间（Latest Finish），指为了保证整个项目按期完成的某项活动必须完成的最晚时间，取决于该项活动的所有紧后工作的最迟开始时间，由逆推法计算 LF &#x3D; min{LS(successor activities)}。</li>
+<li>LS：最迟开始时间（Latest Start），指为了保证整个项目按期完成的某项活动必须开始的最迟时间。LS &#x3D; LF -DU，DU为该活动的持续时间。</li>
+<li>TF：总时差（Total float time），指在不影响总工期的条件下，一个活动可以利用的机动时间。TF &#x3D; LF - EF。</li>
+<li>FF：自由时差（Free float time），指在不影响紧后工作最早开始时间的条件下，一个活动可能被延迟的时间。FF &#x3D; min{ES(successor activities)} - EF。<br>由关键路径法得到的最早&#x2F;最晚的开始&#x2F;结束时间并不一定就是项目进度计划，而是把既定的参数（活动持续时间、逻辑关系、提前量、滞后量和其它制约条件）输入进度模型后所得到的结果，表明活动可以在该时段内实施。</li>
+</ul>
+<p>早期关键路径法的表示方法都是箭线法（ADM），随着计算机的发展，前导图（PDM）逐渐成为主流方法。</p>
+<h2 id="关键路径法"><a href="#关键路径法" class="headerlink" title="关键路径法"></a>关键路径法</h2><p>某项目工程由 11项作业组成（分别用 A、B、…K表示），其计划完成时间及作业间相互关系如下表所示。建立计划网络图，并计算完成该项目的最短时间。</p>
+<table>
+<thead>
+<tr>
+<th>作业</th>
+<th>计划完成天数</th>
+<th>紧前工序</th>
+<th>作业</th>
+<th>计划完成天数</th>
+<th>紧前工序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>5</td>
+<td>无</td>
+<td>G</td>
+<td>21</td>
+<td>B,E</td>
+</tr>
+<tr>
+<td>B</td>
+<td>10</td>
+<td>无</td>
+<td>H</td>
+<td>35</td>
+<td>B,E</td>
+</tr>
+<tr>
+<td>C</td>
+<td>11</td>
+<td>无</td>
+<td>I</td>
+<td>25</td>
+<td>B,E</td>
+</tr>
+<tr>
+<td>D</td>
+<td>4</td>
+<td>B</td>
+<td>J</td>
+<td>15</td>
+<td>F,G,I</td>
+</tr>
+<tr>
+<td>E</td>
+<td>4</td>
+<td>A</td>
+<td>K</td>
+<td>20</td>
+<td>F,G</td>
+</tr>
+<tr>
+<td>F</td>
+<td>15</td>
+<td>C,D</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>本案例问题来自：司守奎、孙兆亮，数学建模算法与应用（第2版），P62-68，例4.16-4.18，国防工业出版社。</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>问题分析： 用如下图所示的计划网络图表示问题描述的各项作业及作业间的相互关系。图中的顶点表示作业开始或结束的事件，顶点之间的边（箭线）表示一项作业，边的权值表示该项作业的完成时间。虚线边表示虚拟作业。 该计划网络图的关键路径长度，即为完成该项目的最短时间。</p>
+<img src="http://cdn.sea-whales.cn/images/images/118754623.png">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mathmodel23_v1.py</span></span><br><span class="line"><span class="comment"># Demo23 of mathematical modeling algorithm</span></span><br><span class="line"><span class="comment"># Demo of critical path method (CPM)  with NetworkX</span></span><br><span class="line"><span class="comment"># Copyright 2021 YouCans, XUPT</span></span><br><span class="line"><span class="comment"># Crated：2021-07-25</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt  <span class="comment"># 导入 Matplotlib 工具包</span></span><br><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx  <span class="comment"># 导入 NetworkX 工具包</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 拓扑序列(topological sequence) 和 关键路径(critical path)</span></span><br><span class="line"><span class="comment"># Activity on edge network(AOE), 顶点表示事件或状态，有向边表示活动</span></span><br><span class="line">DG = nx.DiGraph()  <span class="comment"># 创建：空的 有向图</span></span><br><span class="line">DG.add_weighted_edges_from([(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>), (<span class="number">1</span>, <span class="number">3</span>, <span class="number">10</span>), (<span class="number">1</span>, <span class="number">4</span>, <span class="number">11</span>),</span><br><span class="line">                            (<span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>),</span><br><span class="line">                            (<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>), (<span class="number">3</span>, <span class="number">5</span>, <span class="number">0</span>),</span><br><span class="line">                            (<span class="number">4</span>, <span class="number">6</span>, <span class="number">15</span>),</span><br><span class="line">                            (<span class="number">5</span>, <span class="number">6</span>, <span class="number">21</span>), (<span class="number">5</span>, <span class="number">7</span>, <span class="number">25</span>), (<span class="number">5</span>, <span class="number">8</span>, <span class="number">35</span>),</span><br><span class="line">                            (<span class="number">6</span>, <span class="number">7</span>, <span class="number">0</span>), (<span class="number">6</span>, <span class="number">8</span>, <span class="number">20</span>),</span><br><span class="line">                            (<span class="number">7</span>, <span class="number">8</span>, <span class="number">15</span>)])  <span class="comment"># 向图中添加多条赋权边: (n1,n2,weight)</span></span><br><span class="line">lenNodes = <span class="built_in">len</span>(DG.nodes)  <span class="comment"># 顶点数量</span></span><br><span class="line">topoSeq = <span class="built_in">list</span>(nx.topological_sort(DG))  <span class="comment"># 拓扑序列</span></span><br><span class="line">nodeCP = <span class="built_in">list</span>(nx.dag_longest_path(DG))  <span class="comment"># 关键路径（节点）</span></span><br><span class="line">lenCP = nx.dag_longest_path_length(DG)  <span class="comment"># 关键路径的长度</span></span><br><span class="line">edgesCP=[]</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(nodeCP)):</span><br><span class="line">    edgesCP.append((nodeCP[k-<span class="number">1</span>],nodeCP[k]))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;拓扑序列：&#123;&#125;&quot;</span>.<span class="built_in">format</span>(topoSeq))  <span class="comment"># [1, 3, 4, 2, 5, 6, 7, 8]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;关键路径的顶点：&#123;&#125;&quot;</span>.<span class="built_in">format</span>(nodeCP))  <span class="comment"># [1, 3, 5, 6, 8]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;关键路径的边：&#123;&#125;&quot;</span>.<span class="built_in">format</span>(edgesCP))  <span class="comment"># [(1, 3), (3, 5), (5, 6), (6, 8)]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;关键路径长度：&#123;&#125;&quot;</span>.<span class="built_in">format</span>(lenCP))  <span class="comment"># 51</span></span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">pos = &#123;<span class="number">1</span>:(<span class="number">0</span>,<span class="number">4</span>), <span class="number">2</span>:(<span class="number">5</span>,<span class="number">7</span>), <span class="number">3</span>:(<span class="number">5</span>,<span class="number">4</span>), <span class="number">4</span>:(<span class="number">5</span>,<span class="number">1</span>), <span class="number">5</span>:(<span class="number">10</span>,<span class="number">7</span>), <span class="number">6</span>:(<span class="number">10</span>,<span class="number">1</span>), <span class="number">7</span>:(<span class="number">15</span>,<span class="number">4</span>), <span class="number">8</span>:(<span class="number">20</span>,<span class="number">4</span>)&#125;  <span class="comment"># 指定顶点位置</span></span><br><span class="line">edgesDG = DG.edges</span><br><span class="line">edgesDashed = [(<span class="number">3</span>,<span class="number">5</span>),(<span class="number">6</span>,<span class="number">7</span>)]</span><br><span class="line">edgesSolid = <span class="built_in">list</span>(<span class="built_in">set</span>(edgesDG)-<span class="built_in">set</span>(edgesDashed))</span><br><span class="line">labels = nx.get_edge_attributes(DG, <span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line"><span class="comment"># nx.draw(DG, pos, with_labels=True, node_color=&#x27;skyblue&#x27;)  # 绘制有向图</span></span><br><span class="line">nx.draw_networkx_nodes(DG, pos, node_color=<span class="string">&#x27;orange&#x27;</span>,node_size=<span class="number">400</span>)  <span class="comment"># 设置指定顶点的颜色、宽度</span></span><br><span class="line">nx.draw_networkx_labels(DG, pos)  <span class="comment"># 设置指定顶点的标签</span></span><br><span class="line">nx.draw_networkx_edges(DG, pos, edgelist=edgesSolid, edge_color=<span class="string">&#x27;dimgrey&#x27;</span>, style=<span class="string">&#x27;solid&#x27;</span>)  <span class="comment"># 设置指定边的颜色、线型</span></span><br><span class="line">nx.draw_networkx_edges(DG, pos, edgelist=edgesDashed, edge_color=<span class="string">&#x27;grey&#x27;</span>, style=<span class="string">&#x27;dashed&#x27;</span>)  <span class="comment"># 设置指定边，虚线</span></span><br><span class="line">nx.draw_networkx_edge_labels(DG, pos, edge_labels=labels, font_color=<span class="string">&#x27;dimgrey&#x27;</span>)  <span class="comment"># 显示边的权值</span></span><br><span class="line">ax.set_title(<span class="string">&quot;Project network graph by youcans@xupt&quot;</span>)</span><br><span class="line">ax.text(<span class="number">16</span>, <span class="number">0</span>, <span class="string">&quot;youcans-xupt&quot;</span>, color=<span class="string">&#x27;gainsboro&#x27;</span>)</span><br><span class="line">plt.xlim(-<span class="number">2</span>, <span class="number">22</span>)</span><br><span class="line">plt.ylim(-<span class="number">1</span>, <span class="number">9</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;on&#x27;</span>)</span><br><span class="line">plt.show()  <span class="comment"># YouCans, XUPT</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>程序运行结果：</p>
+<pre><code>拓扑序列：[1, 3, 4, 2, 5, 6, 7, 8]
+关键路径的顶点：[1, 3, 5, 6, 8]
+关键路径的边：[(1, 3), (3, 5), (5, 6), (6, 8)]
+关键路径长度：51
+</code></pre>
+<blockquote>
+<p>原文链接：(<a target="_blank" rel="noopener" href="https://blog.csdn.net/youcans/article/details/118754623">https://blog.csdn.net/youcans/article/details/118754623</a>)</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a target="_blank" rel="noopener" href="https://github.com/sea-whales">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/posts/192071107/">关键路径法简介</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/3061785244/">Kivy笔记</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/1604330648/">Linux多线程下载</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/742726656/">字符串匹配的KMP算法</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://github.com/sea-whales">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:956590645@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

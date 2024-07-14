@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="树深时见鹿,溪午不闻钟~">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zephyr Lo">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Linux多线程下载"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="树深时见鹿,溪午不闻钟~" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Sea-Whales - 林深时见鹿，海蓝时见鲸"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>Linux多线程下载 - Sea-Whales - 林深时见鹿，海蓝时见鲸</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/posts/1604330648/">
+                Linux多线程下载
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-07-14</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="Linux多线程下载"><a href="#Linux多线程下载" class="headerlink" title="Linux多线程下载"></a>Linux多线程下载</h1><p>有时候我们在下载一个较大的东西上传服务器的时候，有一种操作是先使用本地电脑下载，然后上传到服务器，或者直接使用服务器上的wget进行安装，但是使用本地下载然后上传的话，如果受到本地网络或者服务器的限制，要么可能下载速度慢或者上传速度慢，而且可能会出现等待时间过长的情况，那如果我们使用linux服务器上比较常见见的下载工具curl和wget，但是两者都不支持多线程， 断点续传的作用不见得能发挥到最大。给大家介绍两款linux中多线程下载工具<code>axel</code>和<code>aria2c</code>，开启多线程疯狂下载。</p>
+<p>我们先来介绍下<code>axel</code></p>
+<h2 id="axel"><a href="#axel" class="headerlink" title="axel"></a>axel</h2><p>我们这边以Centos7系统为例，其他系统类似，只要使用对应的安装命令安装正确的包，就可以使用了。</p>
+<h3 id="CentOS-7安装Axel："><a href="#CentOS-7安装Axel：" class="headerlink" title="CentOS 7安装Axel："></a>CentOS 7安装Axel：</h3><p>目前yum官方源上没有Axel，我们无法通过yum直接进行安装，但是我们可以通过安装epel第三方源然后后yum安装axel下载工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install axel</span><br></pre></td></tr></table></figure>
+
+<p>大家也可以选择使用以下网址将rpm包下载后将包包上传，然后进行手动安装。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://pkgs.org/download/axel</span><br></pre></td></tr></table></figure>
+
+<p>然后使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh 包名字（本地包位置以及名字）</span><br><span class="line">或者</span><br><span class="line">rpm -Uvh 包连接（远程rpm包，命令会自动下载后安装）</span><br></pre></td></tr></table></figure>
+
+<h2 id="CentOS-6安装Axel："><a href="#CentOS-6安装Axel：" class="headerlink" title="CentOS 6安装Axel："></a>CentOS 6安装Axel：</h2><h4 id="32位CentOS-6执行下面命令："><a href="#32位CentOS-6执行下面命令：" class="headerlink" title="32位CentOS 6执行下面命令："></a>32位CentOS 6执行下面命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://mirrors.sohu.com/dag/redhat/el6/en/i386/rpmforge/RPMS/axel-2.4-1.el6.rf.i686.rpm</span><br><span class="line">rpm -ivh axel-2.4-1.el6.rf.i686.rpm</span><br></pre></td></tr></table></figure>
+
+<h4 id="64位CentOS-6执行下面命令："><a href="#64位CentOS-6执行下面命令：" class="headerlink" title="64位CentOS 6执行下面命令："></a>64位CentOS 6执行下面命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://mirrors.sohu.com/dag/redhat/el6/en/x86_64/rpmforge/RPMS/axel-2.4-1.el6.rf.x86_64.rpm</span><br><span class="line">rpm -ivh axel-2.4-1.el6.rf.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="Debian-Ubuntu安装Axel："><a href="#Debian-Ubuntu安装Axel：" class="headerlink" title="Debian&#x2F;Ubuntu安装Axel："></a>Debian&#x2F;Ubuntu安装Axel：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install axel</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fedora安装Axel"><a href="#Fedora安装Axel" class="headerlink" title="Fedora安装Axel"></a>Fedora安装Axel</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install axel</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>简略使用.”-n”线程数、”-o”下载保存目录、”-a”简略下载条。我们以下载一个GITHUB上的Odoo为例,这个包大概149MB，我正常下载速度在30k左右。</p>
+<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915133508036.png" alt="image-20210915133508036"></p>
+<p>用axel开10个下载:</p>
+<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915142502988.png" alt="image-20210915142502988"></p>
+<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915142728672.png" alt="image-20210915142728672"></p>
+<p>本想使用相同的下载，但是由于我系统安装的axel过低，下载Https的时候一直出现以下情况：</p>
+<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915142803607.png" alt="image-20210915142803607"></p>
+<p>我看了下资料好像是我安装的<code>axel</code>版本较低，我尝试安装更高版本的，但是由于都是第三方包，且包对不上版本，所以我就拿另一个作为比对，我们可以看到，单个线程下载的速度可以到达3万Kb左右。<strong>而且如果下载过程中下载中断可以再执行下载命令即可恢复上次的下载进度。</strong></p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">--max-speed=x , -s x 最高速度x </span><br><span class="line">--num-connections=x , -n x 连接数x </span><br><span class="line">--output=f , -o f 下载为本地文件f </span><br><span class="line">--search[=x] , -S [x] 搜索镜像 </span><br><span class="line">--header=x , -H x 添加头文件字符串x（指定 HTTP header） </span><br><span class="line">--user-agent=x , -U x 设置用户代理（指定 HTTP user agent） </span><br><span class="line">--no-proxy ， -N 不使用代理服务器 </span><br><span class="line">--quiet ， -q 静默模式 </span><br><span class="line">--verbose ，-v 更多状态信息 </span><br><span class="line">--alternate ， -a Alternate progress indicator </span><br><span class="line">--<span class="built_in">help</span> ，-h 帮助 </span><br><span class="line">--version ，-V 版本信息</span><br></pre></td></tr></table></figure>
+
+<h2 id="aria2c"><a href="#aria2c" class="headerlink" title="aria2c"></a>aria2c</h2><p>aria2就更强大了，他提供了Windows、Mac和Linux三个版本的，在Windows上实现多线程下载。使用命令.&#x2F;aria2c –v，查看Enabled Feature。如下图所示，支持BT，GZip, HTTPS， Medssage Digest下载。aria2是一个轻量级的多协议多源命令行下载实用程序。可以通过内置的JSON-RPC和XML-RPC接口操作aria2。重点圈出来HTTPS，是因为我想下载的一些文件是基于HTTPS。</p>
+<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915143730187.png" alt="image-20210915143730187"></p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/aria2/aria2/releases">https://github.com/aria2/aria2/releases</a><br>根据平台选择相应的版本就可以了</p>
+<h3 id="下载相关配置"><a href="#下载相关配置" class="headerlink" title="下载相关配置"></a>下载相关配置</h3><p>进入 <code>mkdir ~/.aria2</code></p>
+<pre><code>最大同时下载任务数, 运行时可修改, 默认:5
+max-concurrent-downloads=5
+
+同一服务器连接数, 添加时可指定, 默认:1
+max-connection-per-server=15
+
+最小文件分片大小, 添加时可指定, 取值范围1M -1024M, 默认:20M
+假定size=10M, 文件为20MiB 则使用两个来源下载; 文件为15MiB 则使用一个来源下载
+min-split-size=10M
+
+单个任务最大线程数, 添加时可指定, 默认:5
+split=5
+
+整体下载速度限制, 运行时可修改, 默认:0
+#max-overall-download-limit=0
+
+单个任务下载速度限制, 默认:0
+#max-download-limit=0
+
+整体上传速度限制, 运行时可修改, 默认:0
+max-overall-upload-limit=20kb
+
+单个任务上传速度限制, 默认:0
+max-upload-limit=5kb
+
+禁用IPv6, 默认:false
+disable-ipv6=true
+
+禁用https证书检查
+check-certificate=false
+#运行覆盖已存在文件
+allow-overwrite=true
+#自动重命名
+auto-file-renaming
+
+进度保存相关
+从会话文件中读取下载任务
+input-file=/etc/aria2/aria2.session
+
+在Aria2退出时保存错误/未完成的下载任务到会话文件
+save-session=/etc/aria2/aria2.session
+
+定时保存会话, 0为退出时才保存, 需1.16.1以上版本, 默认:0
+save-session-interval=30
+
+RPC相关设置
+启用RPC, 默认:false
+enable-rpc=true
+
+允许所有来源, 默认:false
+rpc-allow-origin-all=true
+
+允许非外部访问, 默认:false
+rpc-listen-all=true
+
+事件轮询方式, 取值:[epoll, kqueue, port, poll, select], 不同系统默认值不同
+#event-poll=select
+
+RPC监听端口, 端口被占用时可以修改, 默认:6800
+rpc-listen-port=6800
+
+保存上传的种子文件
+rpc-save-upload-metadata=false
+
+BT/PT下载相关
+当下载的是一个种子(以.torrent结尾)时, 自动开始BT任务, 默认:true
+#follow-torrent=true
+
+BT监听端口, 当端口被屏蔽时使用, 默认:6881-6999
+listen-port=51413
+
+单个种子最大连接数, 默认:55
+#bt-max-peers=55
+
+打开DHT功能, PT需要禁用, 默认:true
+enable-dht=true
+
+打开IPv6 DHT功能, PT需要禁用
+enable-dht6=false
+
+DHT网络监听端口, 默认:6881-6999
+#dht-listen-port=6881-6999
+
+本地节点查找, PT需要禁用, 默认:false
+bt-enable-lpd=true
+
+种子交换, PT需要禁用, 默认:true
+enable-peer-exchange=true
+
+每个种子限速, 对少种的PT很有用, 默认:50K
+#bt-request-peer-speed-limit=50K
+
+客户端伪装, PT需要
+peer-id-prefix=-UT341-
+user-agent=uTorrent/341(109279400)(30888)
+
+当种子的分享率达到这个数时, 自动停止做种, 0为一直做种, 默认:1.0
+seed-ratio=1.0
+
+强制保存会话, 话即使任务已经完成, 默认:false
+较新的版本开启后会在任务完成后依然保留.aria2文件
+#force-save=false
+
+BT校验相关, 默认:true
+#bt-hash-check-seed=true
+
+继续之前的BT任务时, 无需再次校验, 默认:false
+bt-seed-unverified=true
+
+保存磁力链接元数据为种子文件(.torrent文件), 默认:false
+#bt-save-metadata=false
+#仅下载种子文件
+bt-metadata-only=true
+#通过网上的种子文件下载，种子保存在内存
+follow-torrent=mem
+</code></pre>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h4 id="一般下载"><a href="#一般下载" class="headerlink" title="一般下载"></a>一般下载</h4><p>使用aria2 下载文件，只需在命令后附加地址即可如：</p>
+<pre><code>aria2c http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.22.6.tar.bz2
+</code></pre>
+<h4 id="分段下载"><a href="#分段下载" class="headerlink" title="分段下载"></a>分段下载</h4><p>利用 aria2的分段下载功能可以加快文件的下载速度，对于下载大文件时特别有用。为了使用aria2的分段下载功能，你需要在命令中指定s选项</p>
+<pre><code>aria2c -s 2 http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.22.6.tar.bz2
+</code></pre>
+<p>这将使用2个连接来下载该文件。s后面的参数值介于1~5之间，你可以根据实际情况选择。</p>
+<h4 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h4><p>在命令中使用c选项可以断点续传文件。</p>
+<pre><code>aria2c -c http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.22.6.tar.bz2
+</code></pre>
+<h4 id="下载-torrent-文件"><a href="#下载-torrent-文件" class="headerlink" title="下载 torrent 文件"></a>下载 torrent 文件</h4><p>你也可以使用 aria2 下载BitTorrent文件如：</p>
+<pre><code>aria2c -0 gutsy.torrent http://cdimage.ubuntu.com/daily-live/current/gutsy-desktop-i386.iso.torrent
+</code></pre>
+<h4 id="文件读取连接下载"><a href="#文件读取连接下载" class="headerlink" title="文件读取连接下载"></a>文件读取连接下载</h4><p>从 files.txt 中获取下载链接进行下载， files.txt 中可以包含多个链接如：</p>
+<pre><code>aria2c -i files.txt
+</code></pre>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/Linux-axel-aria2c/">#Linux,axel,aria2c</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a target="_blank" rel="noopener" href="https://github.com/sea-whales">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/posts/192071107/">关键路径法简介</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/3061785244/">Kivy笔记</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/1604330648/">Linux多线程下载</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/742726656/">字符串匹配的KMP算法</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://github.com/sea-whales">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:956590645@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

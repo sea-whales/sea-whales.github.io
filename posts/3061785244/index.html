@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Sea-Whales - 林深时见鹿，海蓝时见鲸"/>
+        <meta property="og:title" content="Kivy笔记"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -47,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>Sea-Whales - 林深时见鹿，海蓝时见鲸</title>
+    <title>Kivy笔记 - Sea-Whales - 林深时见鹿，海蓝时见鲸</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -144,138 +144,14 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">Sea-Whales - 林深时见鹿，海蓝时见鲸</h1>
-        
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/posts/192071107/">
-                关键路径法简介
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2024-07-14</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="关键路径法简介"><a href="#关键路径法简介" class="headerlink" title="关键路径法简介"></a>关键路径法简介</h2><p>一个大型工程或项目包括很多活动，关键路径是项目中时间最长的活动顺序，决定着可能的项目最短工期。</p>
-<p>关键路径法（Critical path method，CPM） 是一种基于进度网络模型的方法，用网络图表示各项活动之间的相互关系，获得在一定工期、成本、资源约束条件下的最优进度安排。</p>
-<p>关键路径法源于美国杜邦公司对于项目管理控制成本、减少工期的研究。1959年，Kelly 和 Walker 在论文 Critical Path Planning and Scheduling 中提出了关键路径法的基本原理和方法：计算所有活动的工期，确定其最早开始 ES 和最早结束 EF、最晚开始 LS 和最晚结束 LF 的时间，按照活动的相互关系形成顺序的网络逻辑 图，找到必须的最长路径即为关键路径。</p>
-<p>关键路径法将项目分解成为多个独立的活动并确定每个活动的工期，然后用逻辑关系（结束-开始、结束-结束、开始-开始和开始-结束）将活动连接。首先使用正推法（Forward pass），从起点开始向后计算，依次计算每个顶点（事件）的最早开始时间 ES；然后再使用逆推法（Backward pass），从终点开始向前计算，依次计算每个顶点（事件）的最迟结束时间 LF。进而可以求出每条边（工序）的最早结束时间 EF 和最迟开始时间 LS。最早开始时间 ES 和最晚开始时间 LS 相等的边，就是关键路径上的边，对应的工序是关键工序。</p>
-<ul>
-<li>ES：最早开始时间（Earliest Start），指某项活动能够开始的最早时间，取决于该项活动的所有紧前工作的结束时间，由顺推法计算 ES &#x3D; max{EF(preceding activities)}。</li>
-<li>EF：最早结束时间（Earliest Finish），指某项活动能够完成的最早时间。EF &#x3D; ES+DU， DU为该活动的持续时间。</li>
-<li>LF：最迟结束时间（Latest Finish），指为了保证整个项目按期完成的某项活动必须完成的最晚时间，取决于该项活动的所有紧后工作的最迟开始时间，由逆推法计算 LF &#x3D; min{LS(successor activities)}。</li>
-<li>LS：最迟开始时间（Latest Start），指为了保证整个项目按期完成的某项活动必须开始的最迟时间。LS &#x3D; LF -DU，DU为该活动的持续时间。</li>
-<li>TF：总时差（Total float time），指在不影响总工期的条件下，一个活动可以利用的机动时间。TF &#x3D; LF - EF。</li>
-<li>FF：自由时差（Free float time），指在不影响紧后工作最早开始时间的条件下，一个活动可能被延迟的时间。FF &#x3D; min{ES(successor activities)} - EF。<br>由关键路径法得到的最早&#x2F;最晚的开始&#x2F;结束时间并不一定就是项目进度计划，而是把既定的参数（活动持续时间、逻辑关系、提前量、滞后量和其它制约条件）输入进度模型后所得到的结果，表明活动可以在该时段内实施。</li>
-</ul>
-<p>早期关键路径法的表示方法都是箭线法（ADM），随着计算机的发展，前导图（PDM）逐渐成为主流方法。</p>
-<h2 id="关键路径法"><a href="#关键路径法" class="headerlink" title="关键路径法"></a>关键路径法</h2><p>某项目工程由 11项作业组成（分别用 A、B、…K表示），其计划完成时间及作业间相互关系如下表所示。建立计划网络图，并计算完成该项目的最短时间。</p>
-<table>
-<thead>
-<tr>
-<th>作业</th>
-<th>计划完成天数</th>
-<th>紧前工序</th>
-<th>作业</th>
-<th>计划完成天数</th>
-<th>紧前工序</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>A</td>
-<td>5</td>
-<td>无</td>
-<td>G</td>
-<td>21</td>
-<td>B,E</td>
-</tr>
-<tr>
-<td>B</td>
-<td>10</td>
-<td>无</td>
-<td>H</td>
-<td>35</td>
-<td>B,E</td>
-</tr>
-<tr>
-<td>C</td>
-<td>11</td>
-<td>无</td>
-<td>I</td>
-<td>25</td>
-<td>B,E</td>
-</tr>
-<tr>
-<td>D</td>
-<td>4</td>
-<td>B</td>
-<td>J</td>
-<td>15</td>
-<td>F,G,I</td>
-</tr>
-<tr>
-<td>E</td>
-<td>4</td>
-<td>A</td>
-<td>K</td>
-<td>20</td>
-<td>F,G</td>
-</tr>
-<tr>
-<td>F</td>
-<td>15</td>
-<td>C,D</td>
-<td>.</td>
-<td>.</td>
-<td>.</td>
-</tr>
-<tr>
-<td>本案例问题来自：司守奎、孙兆亮，数学建模算法与应用（第2版），P62-68，例4.16-4.18，国防工业出版社。</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>问题分析： 用如下图所示的计划网络图表示问题描述的各项作业及作业间的相互关系。图中的顶点表示作业开始或结束的事件，顶点之间的边（箭线）表示一项作业，边的权值表示该项作业的完成时间。虚线边表示虚拟作业。 该计划网络图的关键路径长度，即为完成该项目的最短时间。</p>
-<img src="http://cdn.sea-whales.cn/images/images/118754623.png">
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mathmodel23_v1.py</span></span><br><span class="line"><span class="comment"># Demo23 of mathematical modeling algorithm</span></span><br><span class="line"><span class="comment"># Demo of critical path method (CPM)  with NetworkX</span></span><br><span class="line"><span class="comment"># Copyright 2021 YouCans, XUPT</span></span><br><span class="line"><span class="comment"># Crated：2021-07-25</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt  <span class="comment"># 导入 Matplotlib 工具包</span></span><br><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx  <span class="comment"># 导入 NetworkX 工具包</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 拓扑序列(topological sequence) 和 关键路径(critical path)</span></span><br><span class="line"><span class="comment"># Activity on edge network(AOE), 顶点表示事件或状态，有向边表示活动</span></span><br><span class="line">DG = nx.DiGraph()  <span class="comment"># 创建：空的 有向图</span></span><br><span class="line">DG.add_weighted_edges_from([(<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>), (<span class="number">1</span>, <span class="number">3</span>, <span class="number">10</span>), (<span class="number">1</span>, <span class="number">4</span>, <span class="number">11</span>),</span><br><span class="line">                            (<span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>),</span><br><span class="line">                            (<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>), (<span class="number">3</span>, <span class="number">5</span>, <span class="number">0</span>),</span><br><span class="line">                            (<span class="number">4</span>, <span class="number">6</span>, <span class="number">15</span>),</span><br><span class="line">                            (<span class="number">5</span>, <span class="number">6</span>, <span class="number">21</span>), (<span class="number">5</span>, <span class="number">7</span>, <span class="number">25</span>), (<span class="number">5</span>, <span class="number">8</span>, <span class="number">35</span>),</span><br><span class="line">                            (<span class="number">6</span>, <span class="number">7</span>, <span class="number">0</span>), (<span class="number">6</span>, <span class="number">8</span>, <span class="number">20</span>),</span><br><span class="line">                            (<span class="number">7</span>, <span class="number">8</span>, <span class="number">15</span>)])  <span class="comment"># 向图中添加多条赋权边: (n1,n2,weight)</span></span><br><span class="line">lenNodes = <span class="built_in">len</span>(DG.nodes)  <span class="comment"># 顶点数量</span></span><br><span class="line">topoSeq = <span class="built_in">list</span>(nx.topological_sort(DG))  <span class="comment"># 拓扑序列</span></span><br><span class="line">nodeCP = <span class="built_in">list</span>(nx.dag_longest_path(DG))  <span class="comment"># 关键路径（节点）</span></span><br><span class="line">lenCP = nx.dag_longest_path_length(DG)  <span class="comment"># 关键路径的长度</span></span><br><span class="line">edgesCP=[]</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(nodeCP)):</span><br><span class="line">    edgesCP.append((nodeCP[k-<span class="number">1</span>],nodeCP[k]))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;拓扑序列：&#123;&#125;&quot;</span>.<span class="built_in">format</span>(topoSeq))  <span class="comment"># [1, 3, 4, 2, 5, 6, 7, 8]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;关键路径的顶点：&#123;&#125;&quot;</span>.<span class="built_in">format</span>(nodeCP))  <span class="comment"># [1, 3, 5, 6, 8]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;关键路径的边：&#123;&#125;&quot;</span>.<span class="built_in">format</span>(edgesCP))  <span class="comment"># [(1, 3), (3, 5), (5, 6), (6, 8)]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;关键路径长度：&#123;&#125;&quot;</span>.<span class="built_in">format</span>(lenCP))  <span class="comment"># 51</span></span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">pos = &#123;<span class="number">1</span>:(<span class="number">0</span>,<span class="number">4</span>), <span class="number">2</span>:(<span class="number">5</span>,<span class="number">7</span>), <span class="number">3</span>:(<span class="number">5</span>,<span class="number">4</span>), <span class="number">4</span>:(<span class="number">5</span>,<span class="number">1</span>), <span class="number">5</span>:(<span class="number">10</span>,<span class="number">7</span>), <span class="number">6</span>:(<span class="number">10</span>,<span class="number">1</span>), <span class="number">7</span>:(<span class="number">15</span>,<span class="number">4</span>), <span class="number">8</span>:(<span class="number">20</span>,<span class="number">4</span>)&#125;  <span class="comment"># 指定顶点位置</span></span><br><span class="line">edgesDG = DG.edges</span><br><span class="line">edgesDashed = [(<span class="number">3</span>,<span class="number">5</span>),(<span class="number">6</span>,<span class="number">7</span>)]</span><br><span class="line">edgesSolid = <span class="built_in">list</span>(<span class="built_in">set</span>(edgesDG)-<span class="built_in">set</span>(edgesDashed))</span><br><span class="line">labels = nx.get_edge_attributes(DG, <span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line"><span class="comment"># nx.draw(DG, pos, with_labels=True, node_color=&#x27;skyblue&#x27;)  # 绘制有向图</span></span><br><span class="line">nx.draw_networkx_nodes(DG, pos, node_color=<span class="string">&#x27;orange&#x27;</span>,node_size=<span class="number">400</span>)  <span class="comment"># 设置指定顶点的颜色、宽度</span></span><br><span class="line">nx.draw_networkx_labels(DG, pos)  <span class="comment"># 设置指定顶点的标签</span></span><br><span class="line">nx.draw_networkx_edges(DG, pos, edgelist=edgesSolid, edge_color=<span class="string">&#x27;dimgrey&#x27;</span>, style=<span class="string">&#x27;solid&#x27;</span>)  <span class="comment"># 设置指定边的颜色、线型</span></span><br><span class="line">nx.draw_networkx_edges(DG, pos, edgelist=edgesDashed, edge_color=<span class="string">&#x27;grey&#x27;</span>, style=<span class="string">&#x27;dashed&#x27;</span>)  <span class="comment"># 设置指定边，虚线</span></span><br><span class="line">nx.draw_networkx_edge_labels(DG, pos, edge_labels=labels, font_color=<span class="string">&#x27;dimgrey&#x27;</span>)  <span class="comment"># 显示边的权值</span></span><br><span class="line">ax.set_title(<span class="string">&quot;Project network graph by youcans@xupt&quot;</span>)</span><br><span class="line">ax.text(<span class="number">16</span>, <span class="number">0</span>, <span class="string">&quot;youcans-xupt&quot;</span>, color=<span class="string">&#x27;gainsboro&#x27;</span>)</span><br><span class="line">plt.xlim(-<span class="number">2</span>, <span class="number">22</span>)</span><br><span class="line">plt.ylim(-<span class="number">1</span>, <span class="number">9</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;on&#x27;</span>)</span><br><span class="line">plt.show()  <span class="comment"># YouCans, XUPT</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>程序运行结果：</p>
-<pre><code>拓扑序列：[1, 3, 4, 2, 5, 6, 7, 8]
-关键路径的顶点：[1, 3, 5, 6, 8]
-关键路径的边：[(1, 3), (3, 5), (5, 6), (6, 8)]
-关键路径长度：51
-</code></pre>
-<blockquote>
-<p>原文链接：(<a target="_blank" rel="noopener" href="https://blog.csdn.net/youcans/article/details/118754623">https://blog.csdn.net/youcans/article/details/118754623</a>)</p>
-</blockquote>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/posts/3061785244/">
                 Kivy笔记
@@ -290,9 +166,13 @@
         </div>
     </div>
 
-    
-        <div class="content">
-            <h2 id="Kivy命名规则"><a href="#Kivy命名规则" class="headerlink" title="Kivy命名规则"></a>Kivy命名规则</h2><p>1、类继承App的类名(小写)（除去App）+ .kv<br>例如：</p>
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="Kivy命名规则"><a href="#Kivy命名规则" class="headerlink" title="Kivy命名规则"></a>Kivy命名规则</h2><p>1、类继承App的类名(小写)（除去App）+ .kv<br>例如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> kivy.app <span class="keyword">import</span> App</span><br><span class="line"><span class="keyword">from</span> kivy.uix.gridlayout <span class="keyword">import</span> GridLayout</span><br><span class="line"><span class="keyword">from</span> kivy.uix.label <span class="keyword">import</span> Label</span><br><span class="line"><span class="keyword">from</span> kivy.uix.textinput <span class="keyword">import</span> TextInput</span><br><span class="line"><span class="keyword">from</span> kivy.uix.button <span class="keyword">import</span> Button</span><br><span class="line"><span class="keyword">from</span> kivy.graphics <span class="keyword">import</span> Color,Rectangle</span><br><span class="line"><span class="keyword">from</span> kivy.properties <span class="keyword">import</span> ColorProperty, ListProperty</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LoginScreen</span>(<span class="title class_ inherited__">GridLayout</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>(LoginScreen, <span class="variable language_">self</span>).__init__(**kwargs)</span><br><span class="line">        <span class="variable language_">self</span>.cols = <span class="number">2</span></span><br><span class="line">        <span class="variable language_">self</span>.rows = <span class="number">6</span></span><br><span class="line">        <span class="variable language_">self</span>.add_widget(Label(text=<span class="string">&#x27;User Name&#x27;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.username = TextInput(multiline=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.add_widget(<span class="variable language_">self</span>.username)</span><br><span class="line">        <span class="variable language_">self</span>.add_widget(Label(text=<span class="string">&#x27;password&#x27;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.password = TextInput(password=<span class="literal">True</span>, multiline=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.add_widget(<span class="variable language_">self</span>.password)</span><br><span class="line">        <span class="variable language_">self</span>.button = Button(size=(<span class="number">.4</span>, <span class="number">.63</span>), text=<span class="string">&#x27;iPaoMi&#x27;</span>, background_color=(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>), font_size=<span class="number">15</span>, color=(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">        <span class="variable language_">self</span>.button.bind(on_press=<span class="variable language_">self</span>.on_push)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.add_widget(<span class="variable language_">self</span>.button)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> <span class="variable language_">self</span>.password.canvas.before:</span><br><span class="line">            Color(<span class="number">1</span>, <span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0.5</span>)</span><br><span class="line">            <span class="variable language_">self</span>.password = Rectangle(size=<span class="variable language_">self</span>.password.size, pos=<span class="variable language_">self</span>.password.pos)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">on_push</span>(<span class="params">self, inst</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;inst&#x27;</span>+inst.text)</span><br><span class="line">        <span class="variable language_">self</span>.button.text = inst.text</span><br><span class="line">        <span class="variable language_">self</span>.button.height=<span class="number">12</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyApp</span>(<span class="title class_ inherited__">App</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">build</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.root = root = LoginScreen()</span><br><span class="line">        <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    MyApp().run()</span><br></pre></td></tr></table></figure>
 
 <p>创建的kv文件则为 <code>my.kv</code><br>代码分离规则：<br>定义页面:<br>使用<code>&lt;&gt;:</code>创建一个页面，页面和py里的类一致。<br>例如：<br>且使用缩进标识控件和属性的隶属关系。</p>
@@ -2030,512 +1910,20 @@ if __name__ == &#39;__main__&#39;:
 </tr>
 </tbody></table>
 
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/posts/1604330648/">
-                Linux多线程下载
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2024-07-14</span>
-            
-            
-            
-        </div>
     </div>
 
     
-        <div class="content">
-            <h1 id="Linux多线程下载"><a href="#Linux多线程下载" class="headerlink" title="Linux多线程下载"></a>Linux多线程下载</h1><p>有时候我们在下载一个较大的东西上传服务器的时候，有一种操作是先使用本地电脑下载，然后上传到服务器，或者直接使用服务器上的wget进行安装，但是使用本地下载然后上传的话，如果受到本地网络或者服务器的限制，要么可能下载速度慢或者上传速度慢，而且可能会出现等待时间过长的情况，那如果我们使用linux服务器上比较常见见的下载工具curl和wget，但是两者都不支持多线程， 断点续传的作用不见得能发挥到最大。给大家介绍两款linux中多线程下载工具<code>axel</code>和<code>aria2c</code>，开启多线程疯狂下载。</p>
-<p>我们先来介绍下<code>axel</code></p>
-<h2 id="axel"><a href="#axel" class="headerlink" title="axel"></a>axel</h2><p>我们这边以Centos7系统为例，其他系统类似，只要使用对应的安装命令安装正确的包，就可以使用了。</p>
-<h3 id="CentOS-7安装Axel："><a href="#CentOS-7安装Axel：" class="headerlink" title="CentOS 7安装Axel："></a>CentOS 7安装Axel：</h3><p>目前yum官方源上没有Axel，我们无法通过yum直接进行安装，但是我们可以通过安装epel第三方源然后后yum安装axel下载工具。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install axel</span><br></pre></td></tr></table></figure>
 
-<p>大家也可以选择使用以下网址将rpm包下载后将包包上传，然后进行手动安装。</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://pkgs.org/download/axel</span><br></pre></td></tr></table></figure>
+    
 
-<p>然后使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh 包名字（本地包位置以及名字）</span><br><span class="line">或者</span><br><span class="line">rpm -Uvh 包连接（远程rpm包，命令会自动下载后安装）</span><br></pre></td></tr></table></figure>
-
-<h2 id="CentOS-6安装Axel："><a href="#CentOS-6安装Axel：" class="headerlink" title="CentOS 6安装Axel："></a>CentOS 6安装Axel：</h2><h4 id="32位CentOS-6执行下面命令："><a href="#32位CentOS-6执行下面命令：" class="headerlink" title="32位CentOS 6执行下面命令："></a>32位CentOS 6执行下面命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://mirrors.sohu.com/dag/redhat/el6/en/i386/rpmforge/RPMS/axel-2.4-1.el6.rf.i686.rpm</span><br><span class="line">rpm -ivh axel-2.4-1.el6.rf.i686.rpm</span><br></pre></td></tr></table></figure>
-
-<h4 id="64位CentOS-6执行下面命令："><a href="#64位CentOS-6执行下面命令：" class="headerlink" title="64位CentOS 6执行下面命令："></a>64位CentOS 6执行下面命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://mirrors.sohu.com/dag/redhat/el6/en/x86_64/rpmforge/RPMS/axel-2.4-1.el6.rf.x86_64.rpm</span><br><span class="line">rpm -ivh axel-2.4-1.el6.rf.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-<h3 id="Debian-Ubuntu安装Axel："><a href="#Debian-Ubuntu安装Axel：" class="headerlink" title="Debian&#x2F;Ubuntu安装Axel："></a>Debian&#x2F;Ubuntu安装Axel：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install axel</span><br></pre></td></tr></table></figure>
-
-<h3 id="Fedora安装Axel"><a href="#Fedora安装Axel" class="headerlink" title="Fedora安装Axel"></a>Fedora安装Axel</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install axel</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>简略使用.”-n”线程数、”-o”下载保存目录、”-a”简略下载条。我们以下载一个GITHUB上的Odoo为例,这个包大概149MB，我正常下载速度在30k左右。</p>
-<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915133508036.png" alt="image-20210915133508036"></p>
-<p>用axel开10个下载:</p>
-<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915142502988.png" alt="image-20210915142502988"></p>
-<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915142728672.png" alt="image-20210915142728672"></p>
-<p>本想使用相同的下载，但是由于我系统安装的axel过低，下载Https的时候一直出现以下情况：</p>
-<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915142803607.png" alt="image-20210915142803607"></p>
-<p>我看了下资料好像是我安装的<code>axel</code>版本较低，我尝试安装更高版本的，但是由于都是第三方包，且包对不上版本，所以我就拿另一个作为比对，我们可以看到，单个线程下载的速度可以到达3万Kb左右。<strong>而且如果下载过程中下载中断可以再执行下载命令即可恢复上次的下载进度。</strong></p>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">--max-speed=x , -s x 最高速度x </span><br><span class="line">--num-connections=x , -n x 连接数x </span><br><span class="line">--output=f , -o f 下载为本地文件f </span><br><span class="line">--search[=x] , -S [x] 搜索镜像 </span><br><span class="line">--header=x , -H x 添加头文件字符串x（指定 HTTP header） </span><br><span class="line">--user-agent=x , -U x 设置用户代理（指定 HTTP user agent） </span><br><span class="line">--no-proxy ， -N 不使用代理服务器 </span><br><span class="line">--quiet ， -q 静默模式 </span><br><span class="line">--verbose ，-v 更多状态信息 </span><br><span class="line">--alternate ， -a Alternate progress indicator </span><br><span class="line">--<span class="built_in">help</span> ，-h 帮助 </span><br><span class="line">--version ，-V 版本信息</span><br></pre></td></tr></table></figure>
-
-<h2 id="aria2c"><a href="#aria2c" class="headerlink" title="aria2c"></a>aria2c</h2><p>aria2就更强大了，他提供了Windows、Mac和Linux三个版本的，在Windows上实现多线程下载。使用命令.&#x2F;aria2c –v，查看Enabled Feature。如下图所示，支持BT，GZip, HTTPS， Medssage Digest下载。aria2是一个轻量级的多协议多源命令行下载实用程序。可以通过内置的JSON-RPC和XML-RPC接口操作aria2。重点圈出来HTTPS，是因为我想下载的一些文件是基于HTTPS。</p>
-<p><img src="https://blogcdn.sea-whales.cn/blog/typecho/image-20210915143730187.png" alt="image-20210915143730187"></p>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/aria2/aria2/releases">https://github.com/aria2/aria2/releases</a><br>根据平台选择相应的版本就可以了</p>
-<h3 id="下载相关配置"><a href="#下载相关配置" class="headerlink" title="下载相关配置"></a>下载相关配置</h3><p>进入 <code>mkdir ~/.aria2</code></p>
-<pre><code>最大同时下载任务数, 运行时可修改, 默认:5
-max-concurrent-downloads=5
-
-同一服务器连接数, 添加时可指定, 默认:1
-max-connection-per-server=15
-
-最小文件分片大小, 添加时可指定, 取值范围1M -1024M, 默认:20M
-假定size=10M, 文件为20MiB 则使用两个来源下载; 文件为15MiB 则使用一个来源下载
-min-split-size=10M
-
-单个任务最大线程数, 添加时可指定, 默认:5
-split=5
-
-整体下载速度限制, 运行时可修改, 默认:0
-#max-overall-download-limit=0
-
-单个任务下载速度限制, 默认:0
-#max-download-limit=0
-
-整体上传速度限制, 运行时可修改, 默认:0
-max-overall-upload-limit=20kb
-
-单个任务上传速度限制, 默认:0
-max-upload-limit=5kb
-
-禁用IPv6, 默认:false
-disable-ipv6=true
-
-禁用https证书检查
-check-certificate=false
-#运行覆盖已存在文件
-allow-overwrite=true
-#自动重命名
-auto-file-renaming
-
-进度保存相关
-从会话文件中读取下载任务
-input-file=/etc/aria2/aria2.session
-
-在Aria2退出时保存错误/未完成的下载任务到会话文件
-save-session=/etc/aria2/aria2.session
-
-定时保存会话, 0为退出时才保存, 需1.16.1以上版本, 默认:0
-save-session-interval=30
-
-RPC相关设置
-启用RPC, 默认:false
-enable-rpc=true
-
-允许所有来源, 默认:false
-rpc-allow-origin-all=true
-
-允许非外部访问, 默认:false
-rpc-listen-all=true
-
-事件轮询方式, 取值:[epoll, kqueue, port, poll, select], 不同系统默认值不同
-#event-poll=select
-
-RPC监听端口, 端口被占用时可以修改, 默认:6800
-rpc-listen-port=6800
-
-保存上传的种子文件
-rpc-save-upload-metadata=false
-
-BT/PT下载相关
-当下载的是一个种子(以.torrent结尾)时, 自动开始BT任务, 默认:true
-#follow-torrent=true
-
-BT监听端口, 当端口被屏蔽时使用, 默认:6881-6999
-listen-port=51413
-
-单个种子最大连接数, 默认:55
-#bt-max-peers=55
-
-打开DHT功能, PT需要禁用, 默认:true
-enable-dht=true
-
-打开IPv6 DHT功能, PT需要禁用
-enable-dht6=false
-
-DHT网络监听端口, 默认:6881-6999
-#dht-listen-port=6881-6999
-
-本地节点查找, PT需要禁用, 默认:false
-bt-enable-lpd=true
-
-种子交换, PT需要禁用, 默认:true
-enable-peer-exchange=true
-
-每个种子限速, 对少种的PT很有用, 默认:50K
-#bt-request-peer-speed-limit=50K
-
-客户端伪装, PT需要
-peer-id-prefix=-UT341-
-user-agent=uTorrent/341(109279400)(30888)
-
-当种子的分享率达到这个数时, 自动停止做种, 0为一直做种, 默认:1.0
-seed-ratio=1.0
-
-强制保存会话, 话即使任务已经完成, 默认:false
-较新的版本开启后会在任务完成后依然保留.aria2文件
-#force-save=false
-
-BT校验相关, 默认:true
-#bt-hash-check-seed=true
-
-继续之前的BT任务时, 无需再次校验, 默认:false
-bt-seed-unverified=true
-
-保存磁力链接元数据为种子文件(.torrent文件), 默认:false
-#bt-save-metadata=false
-#仅下载种子文件
-bt-metadata-only=true
-#通过网上的种子文件下载，种子保存在内存
-follow-torrent=mem
-</code></pre>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><h4 id="一般下载"><a href="#一般下载" class="headerlink" title="一般下载"></a>一般下载</h4><p>使用aria2 下载文件，只需在命令后附加地址即可如：</p>
-<pre><code>aria2c http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.22.6.tar.bz2
-</code></pre>
-<h4 id="分段下载"><a href="#分段下载" class="headerlink" title="分段下载"></a>分段下载</h4><p>利用 aria2的分段下载功能可以加快文件的下载速度，对于下载大文件时特别有用。为了使用aria2的分段下载功能，你需要在命令中指定s选项</p>
-<pre><code>aria2c -s 2 http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.22.6.tar.bz2
-</code></pre>
-<p>这将使用2个连接来下载该文件。s后面的参数值介于1~5之间，你可以根据实际情况选择。</p>
-<h4 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h4><p>在命令中使用c选项可以断点续传文件。</p>
-<pre><code>aria2c -c http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.22.6.tar.bz2
-</code></pre>
-<h4 id="下载-torrent-文件"><a href="#下载-torrent-文件" class="headerlink" title="下载 torrent 文件"></a>下载 torrent 文件</h4><p>你也可以使用 aria2 下载BitTorrent文件如：</p>
-<pre><code>aria2c -0 gutsy.torrent http://cdimage.ubuntu.com/daily-live/current/gutsy-desktop-i386.iso.torrent
-</code></pre>
-<h4 id="文件读取连接下载"><a href="#文件读取连接下载" class="headerlink" title="文件读取连接下载"></a>文件读取连接下载</h4><p>从 files.txt 中获取下载链接进行下载， files.txt 中可以包含多个链接如：</p>
-<pre><code>aria2c -i files.txt
-</code></pre>
-
-        </div>
+    <!-- Comments -->
     
 
 </div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/posts/742726656/">
-                字符串匹配的KMP算法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2024-07-14</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/posts/3965341360/">
-                记一次RedHat文件夹访问权限设定
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2024-07-14</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>家里有闲置的电脑，于是我给他装上了RedHat 9.4，准备将一些资料存到上面，于是我装Samba服务将磁盘共享出来，又不想直接使用root权限进行登录，于是做了一个其他账户;<br>这一系列做完后，又将Hexo迁移到Linux上，于是我在Samba共享的磁盘下面给出了一个文件夹用于hexo，比较Windows写MD比较顺手嘛。本着不同账户管理的思想，于是我又建了一个Hexo账户,用于正对Hexo的部署和生成，此时就发现不同账户生成的文件夹和文件,归属权和操作权在不同终端或者Windows资源管理器上没权限操作,于是我就给文件夹指定了特地账户可以完全访问的权限。</p>
-<h2 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h2><p>为了实现在 Red Hat 系统上自动给指定文件夹及其所有子文件夹和文件设置两个特定账户的完全访问权限（读、写、执行），可以使用 bash 脚本结合 <code>chown</code>、<code>chmod</code> 和 <code>setfacl</code> 命令。<br>注意，<code>chown</code> 命令用于改变文件或目录的所有者，而完全访问权限（读、写、执行）通常通过调整权限（使用 <code>chmod</code>）和访问控制列表（使用 <code>setfacl</code>）来实现。<br>以下是三个命令的一些基本用法;</p>
-<h3 id="chown-（改变某个文件或目录的所有者和所属的组）"><a href="#chown-（改变某个文件或目录的所有者和所属的组）" class="headerlink" title="chown （改变某个文件或目录的所有者和所属的组）"></a>chown （改变某个文件或目录的所有者和所属的组）</h3><p><code>chown</code> （<code>change owner</code>），其功能是命令改变某个文件或目录的所有者和所属的组，该命令可以向某个用户授权，使该用户变成指定文件的所有者或者改变文件所属的组。</p>
-<h3 id="chmod-（变更文件或目录的权限）"><a href="#chmod-（变更文件或目录的权限）" class="headerlink" title="chmod （变更文件或目录的权限）"></a>chmod （变更文件或目录的权限）</h3><p><code>chmod</code>（<code>change mode</code>），其功能是改变文件或目录权限的命令。默认只有文件的所有者和管理员可以设置文件权限，普通用户只能管理自己文件的权限属性。</p>
-<h3 id="setfacl-（精确的控制文件权限的分配）"><a href="#setfacl-（精确的控制文件权限的分配）" class="headerlink" title="setfacl （精确的控制文件权限的分配）"></a>setfacl （精确的控制文件权限的分配）</h3><p><code>setfacl</code>（<code>set file access control list</code> 即”设置文件访问控制列表“） 其功能是可以更加精确的控制文件权限的分配，比如让某一个用户对某一个文件具有某种权限。</p>
-<p>总的来说<code>setfacl</code>命令可以用来细分<code>linux</code>下的文件权限。<br>而<code>chmod</code>命令可以把文件权限分为u,g,o三个组，而<code>setfacl</code>可以对每一个文件或目录设置更精确的文件权限。<br>比如：让某一个用户对某一个文件具有某种权限。<br>这种独立于传统的u,g,o的rwx权限之外的具体权限设置叫<code>ACL</code>（<code>Access Control List</code>）</p>
-<p>ACL可以针对单一用户、单一文件或目录来进行r,w,x的权限控制，对于需要特殊权限的使用状况有一定帮助。<br>如，某一个文件，不让单一的某个用户访问。<br>使用<code>setfacl</code>前，要先确保你的系统支持 ACL（访问控制列表），这可以通过运行 <code>getfacl</code> 命令来检查。如果系统提示找不到该命令，你可能需要安装 <code>acl</code> 包。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[hexo@sea-whales seawhales]$ getfacl</span><br><span class="line">Usage: getfacl [-aceEsRLPtpndvh] file ...</span><br><span class="line">Try `getfacl --<span class="built_in">help</span><span class="string">&#x27; for more information.</span></span><br></pre></td></tr></table></figure>
-<p>如果不支持可以执行以下命令,我这边是已经安装了所以没有过程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# yum install acl -y</span><br><span class="line">正在更新 Subscription Management 软件仓库。</span><br><span class="line">上次元数据过期检查：0:59:08 前，执行于 2024年07月14日 星期日 20时01分07秒。</span><br><span class="line">软件包 acl-2.3.1-4.el9.x86_64 已安装。</span><br><span class="line">依赖关系解决。</span><br><span class="line">无需任何处理。</span><br><span class="line">完毕！</span><br><span class="line">[root@sea-whales ~]#</span><br></pre></td></tr></table></figure>
-
-<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfacl -R -m u:<span class="string">&quot;hexo&quot;</span>:rwx <span class="string">&quot;/home/hexo&quot;</span></span><br></pre></td></tr></table></figure>
-<p>于是我就想如果有很多用户那就得执行很多一样的命令于是我就把他写成脚本，假设想让 <code>/path/to/directory</code> 目录及其所有子目录和文件对 <code>user1</code> 和 <code>user2</code> 拥有完全访问权限（即读、写、执行）。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设定目标目录</span></span><br><span class="line">TARGET_DIR=<span class="string">&quot;/path/to/directory&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设定需要添加权限的用户</span></span><br><span class="line">USERS=(<span class="string">&quot;user1&quot;</span> <span class="string">&quot;user2&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置目录和文件的初始权限</span></span><br><span class="line"><span class="comment"># 例如，给所有者读写执行权限，给组和其他用户读执行权限</span></span><br><span class="line"><span class="comment"># 注意：你可能需要根据实际情况调整这些权限</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 <span class="string">&quot;<span class="variable">$TARGET_DIR</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历用户列表，为每个用户设置ACL</span></span><br><span class="line"><span class="keyword">for</span> USER <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;USERS[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">    <span class="comment"># 设置用户对目录的完全控制（rwx）</span></span><br><span class="line">    <span class="comment"># 注意：对于目录，通常需要执行权限来进入</span></span><br><span class="line">    setfacl -R -m u:<span class="string">&quot;<span class="variable">$USER</span>&quot;</span>:rwx <span class="string">&quot;<span class="variable">$TARGET_DIR</span>&quot;</span></span><br><span class="line">    <span class="comment"># 如果需要，你还可以设置默认ACL，以便新创建的文件和目录也继承这些权限</span></span><br><span class="line">    setfacl -R -d -m u:<span class="string">&quot;<span class="variable">$USER</span>&quot;</span>:rwx <span class="string">&quot;<span class="variable">$TARGET_DIR</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;权限设置完成，<span class="variable">$TARGET_DIR</span> 目录及其所有子目录和文件现在对 <span class="variable">$&#123;USERS[*]&#125;</span> 拥有完全访问权限。&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>：</p>
-<ol>
-<li>脚本中的 <code>chmod -R 755 &quot;$TARGET_DIR&quot;</code> 设置了目录和文件的初始权限。你可能需要根据实际情况调整这些权限。</li>
-<li><code>setfacl -R -m u:&quot;$USER&quot;:rwx &quot;$TARGET_DIR&quot;</code> 命令给每个用户设置了对目录和文件的完全访问权限（读、写、执行）。<code>-R</code> 选项表示递归地应用到所有子目录和文件。</li>
-<li><code>setfacl -R -d -m u:&quot;$USER&quot;:rwx &quot;$TARGET_DIR&quot;</code> 命令设置了默认 ACL，这意呀着在 <code>$TARGET_DIR</code> 下新创建的文件和目录将自动继承这些 ACL 规则。</li>
-<li>请确保 <code>$TARGET_DIR</code> 和 <code>USERS</code> 数组中的值根据你的需求进行了正确的设置。</li>
-<li>运行此脚本可能需要 root 权限，因为修改文件系统的权限和 ACL 通常需要超级用户权限。</li>
-</ol>
-<p>保存此脚本到一个文件中，例如 <code>set_directory_permissions.sh</code>，然后通过运行 <code>chmod +x set_directory_permissions.sh</code> 使其可执行，最后以 root 用户身份执行它：<code>sudo ./set_directory_permissions.sh</code>。</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/posts/1856186068/">
-                MongoDB安装记录和错误解决
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2024-07-14</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我使用的是RedHat 9.4 安装Mongodb</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# <span class="built_in">cat</span> /etc/redhat-release</span><br><span class="line">Red Hat Enterprise Linux release 9.4 (Plow)</span><br></pre></td></tr></table></figure>
-<h2 id="1-MongoDB安装"><a href="#1-MongoDB安装" class="headerlink" title="1. MongoDB安装"></a>1. MongoDB安装</h2><p>Mongodb有以下几种安装方式：</p>
-<ol>
-<li>使用yum安装</li>
-<li>手动下载并安装</li>
-<li>使用docker安装</li>
-</ol>
-<h3 id="1-1-使用yum安装"><a href="#1-1-使用yum安装" class="headerlink" title="1.1 使用yum安装"></a>1.1 使用yum安装</h3><p>一般情况推荐YUM安装，因为它可以确保您安装的是官方支持的最新版本，并且方便进行后续的更新和维护。</p>
-<h4 id="添加MongoDB官方YUM仓库"><a href="#添加MongoDB官方YUM仓库" class="headerlink" title="添加MongoDB官方YUM仓库"></a>添加MongoDB官方YUM仓库</h4><p>首先，需要创建一个新的YUM仓库配置文件，例如<code>/etc/yum.repos.d/mongodb-org-7.0.repo</code>（注意版本号可能根据MongoDB的最新版本而变化）。<br>在该文件中，添加MongoDB的官方仓库信息，包括仓库名称、基础URL、GPG密钥等。<br>我使用的是<code>mongodb-org-7.0</code>，所以我的配置文件如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# cat /etc/yum.repos.d/mongodb-org-7.0.repo</span><br><span class="line">[mongodb-org-7.0]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://pgp.mongodb.com/server-7.0.asc</span><br></pre></td></tr></table></figure>
-<p>注:可以将上面的版本号替换为希望安装的MongoDB版本号</p>
-<ol>
-<li>安装依赖包<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# yum install -y mongodb-org</span><br><span class="line">[root@sea-whales ~]# <span class="built_in">sudo</span> yum install -y mongodb-org</span><br><span class="line">正在更新 Subscription Management 软件仓库。</span><br><span class="line">上次元数据过期检查：4:10:05 前，执行于 2024年07月14日 星期日 07时04分06秒。</span><br><span class="line">依赖关系解决。</span><br><span class="line">=================================================================================================================================================================================================================</span><br><span class="line"> 软件包                                                            架构                                    版本                                           仓库                                              大小</span><br><span class="line">=================================================================================================================================================================================================================</span><br><span class="line">安装:</span><br><span class="line"> mongodb-org                                                       x86_64                                  7.0.12-1.el9                                   mongodb-org-7.0                                  9.3 k</span><br><span class="line">安装依赖关系:</span><br><span class="line"> mongodb-database-tools                                            x86_64                                  100.9.5-1                                      mongodb-org-7.0                                   28 M</span><br><span class="line"> mongodb-mongosh                                                   x86_64                                  2.2.12-1.el8                                   mongodb-org-7.0                                   56 M</span><br><span class="line"> mongodb-org-database                                              x86_64                                  7.0.12-1.el9                                   mongodb-org-7.0                                  9.4 k</span><br><span class="line"> mongodb-org-database-tools-extra                                  x86_64                                  7.0.12-1.el9                                   mongodb-org-7.0                                   14 k</span><br><span class="line"> mongodb-org-mongos                                                x86_64                                  7.0.12-1.el9                                   mongodb-org-7.0                                   24 M</span><br><span class="line"> mongodb-org-server                                                x86_64                                  7.0.12-1.el9                                   mongodb-org-7.0                                   35 M</span><br><span class="line"> mongodb-org-tools                                                 x86_64                                  7.0.12-1.el9                                   mongodb-org-7.0                                  9.3 k</span><br><span class="line"></span><br><span class="line">事务概要</span><br><span class="line">=================================================================================================================================================================================================================</span><br><span class="line">安装  8 软件包</span><br><span class="line"></span><br><span class="line">总下载：143 M</span><br><span class="line">安装大小：642 M</span><br><span class="line">下载软件包：</span><br><span class="line">(1/8): mongodb-org-7.0.12-1.el9.x86_64.rpm                                                                                                                                        15 kB/s | 9.3 kB     00:00</span><br><span class="line">(2/8): mongodb-org-database-7.0.12-1.el9.x86_64.rpm                                                                                                                               12 kB/s | 9.4 kB     00:00</span><br><span class="line">(3/8): mongodb-database-tools-100.9.5-1.x86_64.rpm                                                                                                                                12 MB/s |  28 MB     00:02</span><br><span class="line">(4/8): mongodb-org-database-tools-extra-7.0.12-1.el9.x86_64.rpm                                                                                                                   14 kB/s |  14 kB     00:01</span><br><span class="line">(5/8): mongodb-mongosh-2.2.12.x86_64.rpm                                                                                                                                          14 MB/s |  56 MB     00:03</span><br><span class="line">(6/8): mongodb-org-tools-7.0.12-1.el9.x86_64.rpm                                                                                                                                  21 kB/s | 9.3 kB     00:00</span><br><span class="line">(7/8): mongodb-org-server-7.0.12-1.el9.x86_64.rpm                                                                                                                                 12 MB/s |  35 MB     00:02</span><br><span class="line">(8/8): mongodb-org-mongos-7.0.12-1.el9.x86_64.rpm                                                                                                                                6.6 MB/s |  24 MB     00:03</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">总计                                                                                                                                                                              23 MB/s | 143 MB     00:06</span><br><span class="line">运行事务检查</span><br><span class="line">事务检查成功。</span><br><span class="line">运行事务测试</span><br><span class="line">事务测试成功。</span><br><span class="line">运行事务</span><br><span class="line">  准备中  :                                                                                                                                                                                                  1/1</span><br><span class="line">  安装    : mongodb-org-database-tools-extra-7.0.12-1.el9.x86_64                                                                                                                                             1/8</span><br><span class="line">  运行脚本: mongodb-org-server-7.0.12-1.el9.x86_64                                                                                                                                                           2/8</span><br><span class="line">  安装    : mongodb-org-server-7.0.12-1.el9.x86_64                                                                                                                                                           2/8</span><br><span class="line">  运行脚本: mongodb-org-server-7.0.12-1.el9.x86_64                                                                                                                                                           2/8</span><br><span class="line">Created symlink /etc/systemd/system/multi-user.target.wants/mongod.service → /usr/lib/systemd/system/mongod.service.</span><br><span class="line"></span><br><span class="line">  安装    : mongodb-org-mongos-7.0.12-1.el9.x86_64                                                                                                                                                           3/8</span><br><span class="line">  安装    : mongodb-org-database-7.0.12-1.el9.x86_64                                                                                                                                                         4/8</span><br><span class="line">  安装    : mongodb-mongosh-2.2.12-1.el8.x86_64                                                                                                                                                              5/8</span><br><span class="line">  运行脚本: mongodb-database-tools-100.9.5-1.x86_64                                                                                                                                                          6/8</span><br><span class="line">  安装    : mongodb-database-tools-100.9.5-1.x86_64                                                                                                                                                          6/8</span><br><span class="line">  运行脚本: mongodb-database-tools-100.9.5-1.x86_64                                                                                                                                                          6/8</span><br><span class="line">  安装    : mongodb-org-tools-7.0.12-1.el9.x86_64                                                                                                                                                            7/8</span><br><span class="line">  安装    : mongodb-org-7.0.12-1.el9.x86_64                                                                                                                                                                  8/8</span><br><span class="line">  运行脚本: mongodb-org-7.0.12-1.el9.x86_64                                                                                                                                                                  8/8</span><br><span class="line">  验证    : mongodb-database-tools-100.9.5-1.x86_64                                                                                                                                                          1/8</span><br><span class="line">  验证    : mongodb-mongosh-2.2.12-1.el8.x86_64                                                                                                                                                              2/8</span><br><span class="line">  验证    : mongodb-org-7.0.12-1.el9.x86_64                                                                                                                                                                  3/8</span><br><span class="line">  验证    : mongodb-org-database-7.0.12-1.el9.x86_64                                                                                                                                                         4/8</span><br><span class="line">  验证    : mongodb-org-database-tools-extra-7.0.12-1.el9.x86_64                                                                                                                                             5/8</span><br><span class="line">  验证    : mongodb-org-mongos-7.0.12-1.el9.x86_64                                                                                                                                                           6/8</span><br><span class="line">  验证    : mongodb-org-server-7.0.12-1.el9.x86_64                                                                                                                                                           7/8</span><br><span class="line">  验证    : mongodb-org-tools-7.0.12-1.el9.x86_64                                                                                                                                                            8/8</span><br><span class="line">已更新安装的产品。</span><br><span class="line"></span><br><span class="line">已安装:</span><br><span class="line">  mongodb-database-tools-100.9.5-1.x86_64                       mongodb-mongosh-2.2.12-1.el8.x86_64             mongodb-org-7.0.12-1.el9.x86_64                 mongodb-org-database-7.0.12-1.el9.x86_64</span><br><span class="line">  mongodb-org-database-tools-extra-7.0.12-1.el9.x86_64          mongodb-org-mongos-7.0.12-1.el9.x86_64          mongodb-org-server-7.0.12-1.el9.x86_64          mongodb-org-tools-7.0.12-1.el9.x86_64</span><br><span class="line"></span><br><span class="line">完毕！</span><br></pre></td></tr></table></figure>
-到这里使用yum安装<code>mongodb</code>就完成了</li>
-</ol>
-<h3 id="1-2-手动下载安装"><a href="#1-2-手动下载安装" class="headerlink" title="1.2  手动下载安装"></a>1.2  手动下载安装</h3><p>不推荐,因为需要补充各种依赖包，手动下载MongoDB的RPM包并使用rpm或<code>yum localinstall</code>命令进行安装。这种方法需要您从MongoDB官网或其他可靠源下载适用于Red Hat 9.4的RPM包。<br>打开MongoDB的<a target="_blank" rel="noopener" href="https://www.mongodb.com/">官方网站</a>，并导航到<a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center/community">MongoDB下载页面</a>。通常，可以在首页的导航栏中找到“Download”或“Downloads”链接。</p>
-<p>在下载页面上，根据操作系统版本（<code>Red Hat Enterprise Linux 9.x</code> 或兼容的发行版）和架构（<code>x86_64</code>）选择适合的MongoDB RPM包。注意，MongoDB提供了社区版和企业版，这里我们以社区版为例。<br>点击下载按钮开始下载RPM包。下载完成后，将在浏览器指定的下载位置找到该RPM包文件，文件名可能类似于<code>mongodb-org-server-7.0.12-1.el9.x86_64.rpm</code></p>
-<h4 id="使用rpm命令安装"><a href="#使用rpm命令安装" class="headerlink" title="使用rpm命令安装"></a>使用rpm命令安装</h4><p>将包放到Linux系统目录中，我这里是放在了<code>/home/ftp</code>目录下,<code>cd</code>命令切换到<code>/home/ftp</code>目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/ftp</span><br></pre></td></tr></table></figure>
-<p>使用rmp命令安装MongoDB</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> rpm -ivh mongodb-org-server-7.0.12-1.el9.x86_64.rpm</span><br></pre></td></tr></table></figure>
-<p>这里，<code>-i</code>表示安装，<code>-v</code>表示详细输出，<code>-h</code>表示显示安装进度。</p>
-<p>注意：如果安装过程中提示缺少依赖项,可以按照上面yum安装过程中的输出继续下载依赖，进行安装，可能需要先安装这些依赖项，或者考虑使用<code>yum localinstall</code>命令来自动解决依赖问题。</p>
-<h4 id="使用yum-localinstall命令安装"><a href="#使用yum-localinstall命令安装" class="headerlink" title="使用yum localinstall命令安装"></a>使用<code>yum localinstall</code>命令安装</h4><p><code>yum localinstall</code>命令实际上是<code>yum</code>的一个别名，用于安装本地RPM包并自动解决依赖关系。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum localinstall mongodb-org-server-7.0.12-1.el9.x86_64.rpm</span><br></pre></td></tr></table></figure>
-<p><code>yum</code>会检查RPM包的依赖项，并尝试从配置的仓库中下载并安装缺失的依赖项。</p>
-<h3 id="1-3使用Docker安装"><a href="#1-3使用Docker安装" class="headerlink" title="1.3使用Docker安装"></a>1.3使用Docker安装</h3><p>如果系统已经安装了Docker，可以通过Docker来安装MongoDB。这种方式的好处是可以轻松地在容器中运行MongoDB，便于版本控制和隔离。(由于本文主要讲介绍MongoDB，所以这里就不详细介绍Docker的安装和配置了)</p>
-<h4 id="拉取MongoDB镜像"><a href="#拉取MongoDB镜像" class="headerlink" title="拉取MongoDB镜像"></a>拉取MongoDB镜像</h4><p>使用docker pull命令拉取MongoDB镜像：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mongo:latest</span><br></pre></td></tr></table></figure>
-<p>或者指定版本号拉取特定版本的MongoDB镜像。<br>会有输出如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# docker pull mongo:latest</span><br><span class="line">latest: Pulling from library/mongo</span><br><span class="line">7b1a6ab2e44d: Pull complete</span><br><span class="line">90eb44ebc60b: Pull complete</span><br><span class="line">5085b59f2efb: Pull complete</span><br><span class="line">c7499923d022: Pull complete</span><br><span class="line">019496b6c44a: Pull complete</span><br><span class="line">c0df4f407f69: Pull complete</span><br><span class="line">351daa315b6c: Pull complete</span><br><span class="line">a233e6240acc: Pull complete</span><br><span class="line">a3f57d6be64f: Pull complete</span><br><span class="line">dd1b5b345323: Pull complete</span><br><span class="line">Digest: sha256:5be752bc5f2ac4182252d0f15d74df080923aba39700905cb26d9f70f39e9702</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> mongo:latest</span><br><span class="line">docker.io/library/mongo:latest</span><br></pre></td></tr></table></figure>
-<h2 id="启动MongoDB"><a href="#启动MongoDB" class="headerlink" title="启动MongoDB"></a>启动MongoDB</h2><p>到这里我们基本就是已经安装好Mongodb了，如果只是内部使用就直接启动就好了，MongoDB已经给出了默认配置，只需要启动就可以使用,执行下面命令启动MongoDB并且查看状态，当然只有yum安装的和手动下载安装的才能使用，Docker安装的无法使用下面的命令进行查看，要依赖docker的命令进行查看；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# systemctl start mongod</span><br><span class="line">[root@sea-whales ~]# systemctl status mongod</span><br><span class="line">● mongod.service - MongoDB Database Server</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; preset: disabled)</span><br><span class="line">     Active: active (running) since Sat 2024-07-13 16:39:42 CST; 18h ago</span><br><span class="line">       Docs: https://docs.mongodb.org/manual</span><br><span class="line">   Main PID: 1102 (mongod)</span><br><span class="line">     Memory: 303.8M</span><br><span class="line">        CPU: 8min 51.519s</span><br><span class="line">     CGroup: /system.slice/mongod.service</span><br><span class="line">             └─1102 /usr/bin/mongod -f /etc/mongod.conf</span><br><span class="line"></span><br><span class="line">7月 13 16:39:42 sea-whales systemd[1]: Started MongoDB Database Server.</span><br><span class="line">7月 13 16:39:59 sea-whales mongod[1102]: &#123;<span class="string">&quot;t&quot;</span>:&#123;<span class="string">&quot;<span class="variable">$date</span>&quot;</span>:<span class="string">&quot;2024-07-13T08:39:59.209Z&quot;</span>&#125;,<span class="string">&quot;s&quot;</span>:<span class="string">&quot;I&quot;</span>,  <span class="string">&quot;c&quot;</span>:<span class="string">&quot;CONTROL&quot;</span>,  <span class="string">&quot;id&quot;</span>:74845&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="运行MongoDB容器"><a href="#运行MongoDB容器" class="headerlink" title="运行MongoDB容器"></a>运行MongoDB容器</h4><p>如果是使用docker安装的则使用<code>docker run</code>命令运行MongoDB容器，并指定必要的参数，如端口映射、数据卷等</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mongodb-container -d -p 27017:27017 mongo</span><br></pre></td></tr></table></figure>
-<p>这里<code>-p 27017:27017</code>表示将容器的27017端口映射到宿主机的27017端口。<br>使用<code>docker ps</code>命令查看正在运行的容器，确认MongoDB容器已启动。<br>使用MongoDB客户端连接到容器中的MongoDB实例。</p>
-<h2 id="配置MongoDB"><a href="#配置MongoDB" class="headerlink" title="配置MongoDB"></a>配置MongoDB</h2><p>MongoDB的配置文件通常位于<code>/etc/mongod.conf</code>，可以通过编辑该文件来配置MongoDB的行为。</p>
-<h3 id="通用配置"><a href="#通用配置" class="headerlink" title="通用配置"></a>通用配置</h3><ul>
-<li><p><strong>systemLog</strong>:</p>
-<ul>
-<li><strong>destination</strong>: 指定日志输出的目标，如<code>file</code>或<code>syslog</code>。</li>
-<li><strong>path</strong>: 日志文件的路径（如果<code>destination</code>是<code>file</code>）。</li>
-<li><strong>logAppend</strong>: 是否追加到日志文件，默认为<code>true</code>。</li>
-</ul>
-</li>
-<li><p><strong>storage</strong>:</p>
-<ul>
-<li><strong>dbPath</strong>: 数据文件的存储路径。</li>
-<li><strong>journal</strong>:<ul>
-<li><strong>enabled</strong>: 是否启用journaling，用于数据恢复。</li>
-</ul>
-</li>
-<li><strong>engine</strong>: 存储引擎类型，如<code>wiredTiger</code>。</li>
-</ul>
-</li>
-<li><p><strong>net</strong>:</p>
-<ul>
-<li><strong>port</strong>: MongoDB监听的端口号，默认为27017。</li>
-<li><strong>bindIp</strong>: MongoDB绑定的IP地址，默认为<code>127.0.0.1</code>（仅限本地访问）。</li>
-</ul>
-</li>
-<li><p><strong>security</strong>:</p>
-<ul>
-<li><strong>authorization</strong>: 是否启用访问控制，<code>enabled</code>表示需要认证。</li>
-<li><strong>keyFile</strong>: 集群内部身份验证使用的密钥文件路径。</li>
-</ul>
-</li>
-<li><p><strong>replication</strong>:</p>
-<ul>
-<li><strong>replSetName</strong>: 复制集的名称，用于设置复制集。</li>
-</ul>
-</li>
-<li><p><strong>processManagement</strong>:</p>
-<ul>
-<li><strong>fork</strong>: 是否以守护进程方式运行MongoDB，对于生产环境推荐设置为<code>true</code>。</li>
-<li><strong>pidFilePath</strong>: 进程ID文件的路径。</li>
-</ul>
-</li>
-<li><p><strong>operationProfiling</strong>:</p>
-<ul>
-<li><strong>mode</strong>: 性能分析的模式，如<code>slowOp</code>（仅记录慢操作）。</li>
-<li><strong>slowOpThresholdMs</strong>: 慢操作的阈值（毫秒）。</li>
-</ul>
-</li>
-</ul>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>以下是我使用一个简化的<code>/etc/mongod.conf</code>配置文件：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MongoDB配置文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 系统日志配置</span></span><br><span class="line"><span class="attr">systemLog:</span></span><br><span class="line">  <span class="attr">destination:</span> <span class="string">file</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&quot;/var/log/mongodb/mongod.log&quot;</span></span><br><span class="line">  <span class="attr">logAppend:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 存储引擎配置</span></span><br><span class="line"><span class="attr">storage:</span></span><br><span class="line">  <span class="attr">dbPath:</span> <span class="string">&quot;/var/lib/mongodb&quot;</span></span><br><span class="line">  <span class="attr">journal:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">wiredTiger</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网络配置</span></span><br><span class="line"><span class="attr">net:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">27017</span></span><br><span class="line">  <span class="attr">bindIp:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安全配置</span></span><br><span class="line"><span class="attr">security:</span></span><br><span class="line">  <span class="attr">authorization:</span> <span class="string">&quot;enabled&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制集配置（如果适用）</span></span><br><span class="line"><span class="comment"># replication:</span></span><br><span class="line"><span class="comment">#   replSetName: &quot;myReplSet&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进程管理配置</span></span><br><span class="line"><span class="attr">processManagement:</span></span><br><span class="line">  <span class="attr">fork:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">pidFilePath:</span> <span class="string">&quot;/var/run/mongodb/mongod.pid&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 性能分析配置（可选）</span></span><br><span class="line"><span class="comment"># operationProfiling:</span></span><br><span class="line"><span class="comment">#   mode: slowOp</span></span><br><span class="line"><span class="comment">#   slowOpThresholdMs: 100</span></span><br></pre></td></tr></table></figure>
-
-<p>注意，应该根据自己的需求和MongoDB的版本来调整这些配置。要查看所有可用的配置项及其当前值，可以直接查看<code>/etc/mongod.conf</code>文件，或者使用MongoDB的<code>--config</code>选项与<code>mongod</code>命令结合来指定一个配置文件，并通过<code>--verbose</code>选项获取更多输出信息。<br>但是，请注意，<code>--verbose</code>选项通常用于命令行启动MongoDB时增加日志输出的详细程度，而不是直接列出配置文件中的所有配置项。要列出所有配置项及其默认值，可能需要查阅MongoDB的官方文档。</p>
-<p>配置好之后需要执行下面的命令使得配置生效</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# <span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line">[root@sea-whales ~]# <span class="built_in">sudo</span> systemctl restart mongod</span><br></pre></td></tr></table></figure>
-<p>如果修改后不执行<code>daemon-reload</code>就直接执行<code>restart</code>命令，可能有一个警告，提示你要你先执行<code>daemon-reload</code>，然后再执行<code>restart</code>命令。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# sudo systemctl restart mongod</span><br><span class="line">Warning: The unit file, source configuration file or drop-ins of mongod.service changed on disk. Run &#x27;systemctl daemon-reload&#x27; to reload units.</span><br></pre></td></tr></table></figure>
-<h3 id="Docker安装后配置MongoDB"><a href="#Docker安装后配置MongoDB" class="headerlink" title="Docker安装后配置MongoDB"></a>Docker安装后配置MongoDB</h3><p>docker安装mongodb后，需要修改配置文件的话需要进行一些操作，一般有两种方法：</p>
-<h4 id="方法一：直接编辑容器内的配置文件"><a href="#方法一：直接编辑容器内的配置文件" class="headerlink" title="方法一：直接编辑容器内的配置文件"></a>方法一：直接编辑容器内的配置文件</h4><ol>
-<li><p><strong>定位配置文件</strong>：<br>MongoDB的配置文件通常位于容器内的<code>/etc/mongod.conf</code>路径下。</p>
-</li>
-<li><p><strong>复制配置文件到本地</strong>：<br>使用<code>docker cp</code>命令将容器中的配置文件复制到本地，以便进行修改。命令格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> &lt;容器ID或名称&gt;:/etc/mongod.conf /path/to/local/mongod.conf</span><br></pre></td></tr></table></figure>
-<p>这里<code>&lt;容器ID或名称&gt;</code>是MongoDB容器的ID或名称，<code>/path/to/local/mongod.conf</code>是本地文件系统的目标路径。</p>
-</li>
-<li><p><strong>修改配置文件</strong>：<br>使用文本编辑器（如Vim、Nano、Sublime Text等）打开复制到本地的<code>mongod.conf</code>文件，并修改需要的配置项。常见的配置项包括端口号、数据存储路径、日志级别等。</p>
-</li>
-<li><p><strong>将修改后的配置文件复制回容器</strong>：<br>使用<code>docker cp</code>命令将修改后的配置文件复制回容器中的原始位置。命令格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> /path/to/local/mongod.conf &lt;容器ID或名称&gt;:/etc/mongod.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>重启MongoDB容器</strong>：<br>使用<code>docker restart</code>命令重启MongoDB容器，使修改生效。命令格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart &lt;容器ID或名称&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="方法二：使用Docker卷（Volume）映射配置文件"><a href="#方法二：使用Docker卷（Volume）映射配置文件" class="headerlink" title="方法二：使用Docker卷（Volume）映射配置文件"></a>方法二：使用Docker卷（Volume）映射配置文件</h4><p>这种方法不需要进入容器内部，而是通过Docker卷将宿主机上的目录映射到容器内的配置文件目录。</p>
-<ol>
-<li><p><strong>在宿主机上创建配置文件</strong>：<br>在宿主机上创建一个目录，用于存放MongoDB的配置文件。例如，创建<code>/path/to/mongodb/config</code>目录，并将MongoDB的配置文件（如<code>mongod.conf</code>）放入该目录中。</p>
-</li>
-<li><p><strong>启动MongoDB容器时使用卷映射</strong>：<br>在启动MongoDB容器时，使用<code>-v</code>或<code>--volume</code>参数将宿主机上的配置文件目录映射到容器内的配置文件目录。例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name mongodb -p 27017:27017 -v /path/to/mongodb/config:/etc/mongod.conf mongo:latest</span><br></pre></td></tr></table></figure>
-<p>注意：这里的映射路径可能需要根据实际情况进行调整，因为MongoDB的配置文件通常位于<code>/etc/mongod.conf</code>，但上述命令中的映射可能会覆盖整个<code>/etc/mongod.conf</code>文件而不是目录。实际上，你可能需要创建一个包含<code>mongod.conf</code>的目录，并将其映射到容器内的相应目录，如<code>/etc/mongodb</code>（这取决于MongoDB容器内部的目录结构）。正确的命令可能类似于：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name mongodb -p 27017:27017 -v /path/to/mongodb/config:/etc/mongodb mongo:latest</span><br></pre></td></tr></table></figure>
-<p>并确保宿主机上的<code>/path/to/mongodb/config</code>目录中包含<code>mongod.conf</code>文件。</p>
-</li>
-<li><p><strong>重启MongoDB容器</strong>（如果容器已经运行）：<br>如果MongoDB容器已经在运行，并且你想要应用新的配置文件，你需要先停止容器，删除旧的容器（可选，但推荐以避免配置冲突），然后使用新的配置文件重新创建并启动容器。</p>
-</li>
-</ol>
-<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><ul>
-<li>在修改配置文件之前，建议备份原始配置文件，以防万一需要恢复。</li>
-<li>确保修改后的配置文件语法正确，并且符合MongoDB的要求。</li>
-<li>如果使用Docker卷映射配置文件，请确保宿主机上的配置文件路径和容器内的映射路径正确无误。</li>
-<li>MongoDB的配置项非常多，具体可配置的选项请参考MongoDB的官方文档。</li>
-</ul>
-<h2 id="访问MongoDB"><a href="#访问MongoDB" class="headerlink" title="访问MongoDB"></a>访问MongoDB</h2><p>访问基本以及使用这边就不多描述了，基本的操作就是通过mongo命令行工具来操作数据库了，具体操作可以参考官方文档。</p>
-<h2 id="2-MongoDB错误解决"><a href="#2-MongoDB错误解决" class="headerlink" title="2. MongoDB错误解决"></a>2. MongoDB错误解决</h2><h3 id="错误1：MongoDB启动失败"><a href="#错误1：MongoDB启动失败" class="headerlink" title="错误1：MongoDB启动失败"></a>错误1：MongoDB启动失败</h3><p>错误原因：MongoDB启动失败，可能是端口被占用，也可能是MongoDB的配置文件错误。<br>解决方法：</p>
-<ol>
-<li>检查端口是否被占用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:27017</span><br></pre></td></tr></table></figure></li>
-<li>修改MongoDB的配置文件<br>修改MongoDB的配置文件，将端口号改为其他端口号，例如：27018</li>
-<li>重启MongoDB</li>
-</ol>
-<h3 id="错误2："><a href="#错误2：" class="headerlink" title="错误2："></a>错误2：</h3><p>我遇到一个错误就是在修改MongoDB的配置文件的<code>bindIp</code>项目为<code>0.0.0.0</code>后，重启MongoDB的时候出现了如下错误：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# <span class="built_in">sudo</span> systemctl status mongod</span><br><span class="line">× mongod.service - MongoDB Database Server</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; preset: disabled)</span><br><span class="line">     Active: failed (Result: exit-code) since Sun 2024-07-14 11:24:58 CST; 3s ago</span><br><span class="line">   Duration: 79ms</span><br><span class="line">       Docs: https://docs.mongodb.org/manual</span><br><span class="line">    Process: 59341 ExecStart=/usr/bin/mongod <span class="variable">$OPTIONS</span> (code=exited, status=14)</span><br><span class="line">   Main PID: 59341 (code=exited, status=14)</span><br><span class="line">        CPU: 65ms</span><br><span class="line"></span><br><span class="line">7月 14 11:24:58 sea-whales systemd[1]: Started MongoDB Database Server.</span><br><span class="line">7月 14 11:24:58 sea-whales systemd[1]: mongod.service: Main process exited, code=exited, status=14/n/a</span><br><span class="line">7月 14 11:24:58 sea-whales systemd[1]: mongod.service: Failed with result <span class="string">&#x27;exit-code&#x27;</span>.</span><br></pre></td></tr></table></figure>
-<p>然后就算我修改回<code>127.0.0.1</code>后也是是报告一样的错误；<br>通过查询以下是AI给出的分析：</p>
-<blockquote>
-<p>从您提供的日志信息来看，MongoDB 服务在启动时遇到了问题，并且以状态码 14 退出。状态码 14 通常不是一个标准的 MongoDB 退出码，但在某些情况下，它可能与系统级的问题或 MongoDB 试图执行某些不被允许的操作有关。这里有几个可能的解决步骤和检查点：</p>
-<ol>
-<li><strong>检查 MongoDB 配置文件</strong>：</li>
-</ol>
-<ul>
-<li>确保 MongoDB 的配置文件（如 <code>/etc/mongod.conf</code> 或指定的配置文件路径）没有错误。</li>
-<li>检查配置文件中的路径设置（如 <code>dbPath</code> 和 <code>logPath</code>）是否正确，且 MongoDB 进程有权限访问这些路径。</li>
-</ul>
-<ol start="2">
-<li><strong>查看 MongoDB 日志文件</strong>：</li>
-</ol>
-<ul>
-<li>MongoDB 的日志文件通常会提供更多关于为什么服务无法启动的详细信息。检查 <code>/var/log/mongodb/mongod.log</code> 或您配置文件中指定的日志路径。</li>
-</ul>
-<ol start="3">
-<li><strong>检查系统资源</strong>：</li>
-</ol>
-<ul>
-<li>确保系统有足够的磁盘空间、内存和 CPU 资源来运行 MongoDB。</li>
-<li>检查是否有其他服务或进程占用了 MongoDB 所需的端口（默认是 27017）。</li>
-</ul>
-<ol start="4">
-<li><strong>检查 SELinux 或 AppArmor 设置</strong>：</li>
-</ol>
-<ul>
-<li>如果您的系统启用了 SELinux 或 AppArmor，它们可能会阻止 MongoDB 正常启动。检查相关的安全策略或暂时禁用它们以测试是否是安全设置导致的问题。</li>
-</ul>
-<ol start="5">
-<li><strong>检查 MongoDB 权限</strong>：</li>
-</ol>
-<ul>
-<li>确保 MongoDB 的可执行文件（如 <code>/usr/bin/mongod</code>）和数据库文件目录的权限设置正确。</li>
-<li>MongoDB 通常需要 root 权限来绑定到低端口（如 27017），但建议通过 systemd 或其他服务管理工具以非 root 用户身份运行。</li>
-</ul>
-<ol start="6">
-<li><strong>检查 systemd 单元文件</strong>：</li>
-</ol>
-<ul>
-<li>查看 <code>/usr/lib/systemd/system/mongod.service</code> 文件中的 <code>ExecStart</code> 行，确保 <code>$OPTIONS</code> 变量正确设置，并且没有语法错误。</li>
-<li>尝试手动运行 MongoDB 服务命令（如 <code>/usr/bin/mongod --config /etc/mongod.conf</code>）来检查是否可以直接从命令行启动。</li>
-</ul>
-<ol start="7">
-<li><strong>重新启动 MongoDB 服务</strong>：</li>
-</ol>
-<ul>
-<li>在进行任何更改后，尝试重新启动 MongoDB 服务：<code>sudo systemctl restart mongod.service</code>。</li>
-</ul>
-<ol start="8">
-<li><strong>查看系统日志</strong>：</li>
-</ol>
-<ul>
-<li>检查 <code>/var/log/syslog</code> 或其他系统日志文件，看是否有与 MongoDB 相关的更详细的错误消息。<br>如果上述步骤都不能解决问题，您可能需要考虑重新安装 MongoDB 或寻求更具体的帮助，例如在 MongoDB 社区论坛或支持渠道中询问。</li>
-</ul>
-</blockquote>
-<p>于是我尝试使用<code>/usr/bin/mongod -f /etc/mongod.conf</code>启动，然后在另一个终端执行<code>tail -f /var/log/mongodb/mongod.log</code>命令进行日志的实时查看，也没发现任何报错信息。</p>
-<p>通过各种尝试，最后居然是因为<code>MongoDB</code>数据目录的权限和所有权正确,只需要执行下面两句命令后，在进行重启就可以正常启动了;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# <span class="built_in">sudo</span> <span class="built_in">chown</span> -R mongod:mongod /var/lib/mongo</span><br><span class="line">[root@sea-whales ~]# <span class="built_in">sudo</span> <span class="built_in">chmod</span> -R 755 /var/lib/mongo</span><br><span class="line">[root@sea-whales ~]# systemctl status mongod</span><br><span class="line">● mongod.service - MongoDB Database Server</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; preset: disabled)</span><br><span class="line">     Active: active (running) since Sun 2024-07-14 13:02:36 CST; 4s ago</span><br><span class="line">       Docs: https://docs.mongodb.org/manual</span><br><span class="line">   Main PID: 61154 (mongod)</span><br><span class="line">     Memory: 176.5M</span><br><span class="line">        CPU: 1.582s</span><br><span class="line">     CGroup: /system.slice/mongod.service</span><br><span class="line">             └─61154 /usr/bin/mongod -f /etc/mongod.conf</span><br><span class="line"></span><br><span class="line">7月 14 13:02:36 sea-whales systemd[1]: Started MongoDB Database Server.</span><br></pre></td></tr></table></figure>
-<p>这个问题是我没想到的，因为在前面安装之后MongoDB是可以正常启动的，但是后来我修改了MongoDB的配置文件，然后重启了MongoDB，就出现了这个错误,都没想到会是因为权限的问题。</p>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>经过一些回想，我想到了原来在安装的时候MongoDB我是使用root进行安装的，所以权限是默认的，但是后来<br>我在做服务的时候默认将mongod服务以mongod用户和组的权限运行，就是下面配置文件中 <code>[Service] </code>中的<code>User</code>和<code>Group</code>配置项，导致权限问题，所以导致无法启动服务；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">[root@sea-whales ~]# <span class="built_in">cat</span> /usr/lib/systemd/system/mongod.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=MongoDB Database Server</span><br><span class="line">Documentation=https://docs.mongodb.org/manual</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=mongod</span><br><span class="line">Group=mongod</span><br><span class="line">Environment=<span class="string">&quot;OPTIONS=-f /etc/mongod.conf&quot;</span></span><br><span class="line"><span class="comment"># Environment=&quot;MONGODB_CONFIG_OVERRIDE_NOFORK=1&quot;</span></span><br><span class="line">EnvironmentFile=-/etc/sysconfig/mongod</span><br><span class="line">ExecStart=/usr/bin/mongod -f <span class="variable">$OPTIONS</span></span><br><span class="line"><span class="comment"># $OPTIONS</span></span><br><span class="line">RuntimeDirectory=mongodb</span><br><span class="line"><span class="comment"># file size</span></span><br><span class="line">LimitFSIZE=infinity</span><br><span class="line"><span class="comment"># cpu time</span></span><br><span class="line">LimitCPU=infinity</span><br><span class="line"><span class="comment"># virtual memory size</span></span><br><span class="line">LimitAS=infinity</span><br><span class="line"><span class="comment"># open files</span></span><br><span class="line">LimitNOFILE=64000</span><br><span class="line"><span class="comment"># processes/threads</span></span><br><span class="line">LimitNPROC=64000</span><br><span class="line"><span class="comment"># locked memory</span></span><br><span class="line">LimitMEMLOCK=infinity</span><br><span class="line"><span class="comment"># total threads (user+kernel)</span></span><br><span class="line">TasksMax=infinity</span><br><span class="line">TasksAccounting=<span class="literal">false</span></span><br><span class="line"><span class="comment"># Recommended limits for mongod as specified in</span></span><br><span class="line"><span class="comment"># https://docs.mongodb.com/manual/reference/ulimit/#recommended-ulimit-settings</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">[root@sea-whales ~]#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-        </div>
-    
-
-</div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-
 
 
 </div>
