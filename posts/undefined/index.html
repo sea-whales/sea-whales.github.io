@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Sea-Whales - 林深时见鹿，海蓝时见鲸"/>
+        <meta property="og:title" content="部署jenkins"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -47,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>Mongodb,Linux,Yum - Sea-Whales - 林深时见鹿，海蓝时见鲸</title>
+    <title>部署jenkins - Sea-Whales - 林深时见鹿，海蓝时见鲸</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -136,9 +136,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -146,25 +144,112 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">#Mongodb,Linux,Yum</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/posts/1856186068/">
-        <span class="archive-date">
-            Jul 2024
-        </span>
-        MongoDB安装记录和错误解决
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/posts/undefined/">
+                部署jenkins
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-07-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>在RedHat 9.4上部署Jenkins，你需要遵循一系列步骤来确保Jenkins能够成功安装并运行。以下是一个详细的步骤指南：</p>
+<h3 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h3><ol>
+<li><p><strong>检查系统要求</strong>：</p>
+<ul>
+<li>确保RedHat 9.4系统满足Jenkins的最低系统要求，包括JDK版本（通常建议Java 8及以上版本，但具体取决于Jenkins的版本）。</li>
+<li>确认系统已安装wget、curl等必要的工具，以便下载和安装软件。</li>
+</ul>
+</li>
+<li><p><strong>安装Java</strong>（如果尚未安装）：</p>
+<ul>
+<li>Jenkins需要Java环境来运行。你可以通过RedHat的包管理器安装Java。例如，使用yum安装OpenJDK：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install java-11-openjdk</span><br></pre></td></tr></table></figure></li>
+<li>验证Java安装：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="二、安装Jenkins"><a href="#二、安装Jenkins" class="headerlink" title="二、安装Jenkins"></a>二、安装Jenkins</h3><ol>
+<li><p><strong>添加Jenkins仓库</strong>：</p>
+<ul>
+<li>RedHat 9.4可能不是最新的RedHat版本，但你可以尝试使用Jenkins提供的官方仓库。如果官方仓库不支持RedHat 9.4，你可能需要下载Jenkins的RPM包或使用其他方式安装。</li>
+<li>如果Jenkins官方仓库支持，你可以通过以下命令添加Jenkins仓库：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo</span><br><span class="line"><span class="built_in">sudo</span> rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key</span><br></pre></td></tr></table></figure></li>
+<li>注意：这些命令可能因Jenkins仓库的更新而有所变化，请访问Jenkins官网获取最新信息。</li>
+</ul>
+</li>
+<li><p><strong>通过YUM安装Jenkins</strong>：</p>
+<ul>
+<li>如果Jenkins仓库已添加，你可以使用yum命令安装Jenkins：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install jenkins</span><br></pre></td></tr></table></figure></li>
+<li>安装完成后，Jenkins服务将自动启动。如果没有自动启动，你可以使用以下命令启动它：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start jenkins</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>配置Jenkins端口（可选）</strong>：</p>
+<ul>
+<li>如果需要更改Jenkins的默认端口（8080），你可以编辑Jenkins的配置文件。但请注意，RedHat 9.4可能使用较旧的systemd版本，配置方式可能与较新系统略有不同。</li>
+<li>通常，Jenkins的配置文件位于<code>/etc/sysconfig/jenkins</code>或<code>/etc/default/jenkins</code>，但具体取决于你的系统配置。</li>
+</ul>
+</li>
+</ol>
+<h3 id="三、访问Jenkins"><a href="#三、访问Jenkins" class="headerlink" title="三、访问Jenkins"></a>三、访问Jenkins</h3><ol>
+<li><p><strong>开放防火墙端口</strong>（如果防火墙已启用）：</p>
+<ul>
+<li>如果你更改了Jenkins的端口，确保防火墙允许访问该端口。</li>
+<li>使用<code>firewall-cmd</code>（如果你的系统使用firewalld）或相应的防火墙管理工具来开放端口。</li>
+</ul>
+</li>
+<li><p><strong>访问Jenkins Web界面</strong>：</p>
+<ul>
+<li>在浏览器中访问<code>http://&lt;your-server-ip&gt;:8080</code>（如果更改了端口，请相应更改URL）。</li>
+<li>首次访问时，Jenkins会要求你输入管理员密码。你可以在<code>/var/lib/jenkins/secrets/initialAdminPassword</code>文件中找到这个密码。</li>
+</ul>
+</li>
+<li><p><strong>安装插件和配置Jenkins</strong>：</p>
+<ul>
+<li>按照屏幕上的指示安装推荐的插件。</li>
+<li>创建一个管理员用户并配置Jenkins。</li>
+</ul>
+</li>
+</ol>
+<h3 id="四、后续步骤"><a href="#四、后续步骤" class="headerlink" title="四、后续步骤"></a>四、后续步骤</h3><ul>
+<li><strong>安装和配置必要的插件</strong>：根据你的需求安装Maven Integration、Git Parameter、NodeJS等插件。</li>
+<li><strong>配置全局工具</strong>：在Jenkins的系统管理中配置JDK、Maven、Git等全局工具的路径。</li>
+<li><strong>创建和配置项目</strong>：根据你的项目需求创建Jenkins项目，并配置源码管理、构建触发器、构建环境等。</li>
+</ul>
+<p>请注意，由于RedHat 9.4可能是一个较旧的版本，某些步骤或命令可能与最新版本的RedHat或Jenkins有所不同。如果遇到问题，请查阅Jenkins和RedHat的官方文档或社区论坛以获取帮助。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 
