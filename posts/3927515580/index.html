@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="树深时见鹿,溪午不闻钟~">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zephyr Lo">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="linux上部署kubernetes"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="树深时见鹿,溪午不闻钟~" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Sea-Whales - 林深时见鹿，海蓝时见鲸"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>linux上部署kubernetes - Sea-Whales - 林深时见鹿，海蓝时见鲸</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/posts/3927515580/">
+                linux上部署kubernetes
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2024-07-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>在Linux上部署Kubernetes可以通过多种方式实现，包括使用kubeadm、Kubespray、Minikube、Rancher等。这里，我将详细介绍如何使用kubeadm在裸机上部署一个基本的Kubernetes集群。Kubeadm是Kubernetes官方提供的用于快速安装和初始化集群的工具。</p>
+<h3 id="步骤-1-准备环境"><a href="#步骤-1-准备环境" class="headerlink" title="步骤 1: 准备环境"></a>步骤 1: 准备环境</h3><h4 id="1-1-系统要求"><a href="#1-1-系统要求" class="headerlink" title="1.1 系统要求"></a>1.1 系统要求</h4><ul>
+<li>推荐使用Ubuntu 18.04 LTS 或 CentOS 7 以上的Linux发行版。</li>
+<li>确保所有节点已安装Docker（1.13.1+）和kubelet、kubeadm、kubectl（版本兼容）。</li>
+<li>禁用swap（Kubernetes 1.8+ 不支持具有启用swap的节点）。</li>
+<li>确保节点之间的时间同步。</li>
+</ul>
+<h4 id="1-2-安装Docker"><a href="#1-2-安装Docker" class="headerlink" title="1.2 安装Docker"></a>1.2 安装Docker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Ubuntu 示例</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get install -y apt-transport-https ca-certificates curl software-properties-common</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | <span class="built_in">sudo</span> apt-key add -</span><br><span class="line"><span class="built_in">sudo</span> add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get install -y docker-ce</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动Docker服务并设置开机自启</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl start docker</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-安装kubeadm-kubelet-kubectl"><a href="#1-3-安装kubeadm-kubelet-kubectl" class="headerlink" title="1.3 安装kubeadm, kubelet, kubectl"></a>1.3 安装kubeadm, kubelet, kubectl</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置Kubernetes仓库</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get update &amp;&amp; <span class="built_in">sudo</span> apt-get install -y apt-transport-https curl</span><br><span class="line">curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | <span class="built_in">sudo</span> apt-key add -</span><br><span class="line"><span class="built_in">cat</span> &lt;&lt;<span class="string">EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list</span></span><br><span class="line"><span class="string">deb https://apt.kubernetes.io/ kubernetes-xenial main</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装kubeadm, kubelet, kubectl</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get install -y kubelet kubeadm kubectl</span><br><span class="line"><span class="built_in">sudo</span> apt-mark hold kubelet kubeadm kubectl <span class="comment"># 阻止自动升级</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动kubelet</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> --now kubelet</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤-2-初始化主节点"><a href="#步骤-2-初始化主节点" class="headerlink" title="步骤 2: 初始化主节点"></a>步骤 2: 初始化主节点</h3><p>在选定的主节点上运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=&lt;master-node-ip&gt;</span><br></pre></td></tr></table></figure>
+<p>注意替换<code>&lt;master-node-ip&gt;</code>为你的主节点的IP地址。此命令将初始化集群，并生成一个<code>kubeadm join</code>命令，用于将工作节点加入到集群。</p>
+<h3 id="步骤-3-配置kubectl"><a href="#步骤-3-配置kubectl" class="headerlink" title="步骤 3: 配置kubectl"></a>步骤 3: 配置kubectl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$HOME</span>/.kube</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chown</span> $(<span class="built_in">id</span> -u):$(<span class="built_in">id</span> -g) <span class="variable">$HOME</span>/.kube/config</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤-4-安装Pod网络插件"><a href="#步骤-4-安装Pod网络插件" class="headerlink" title="步骤 4: 安装Pod网络插件"></a>步骤 4: 安装Pod网络插件</h3><p>Kubernetes需要网络插件来确保Pod之间可以相互通信。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤-5-添加工作节点"><a href="#步骤-5-添加工作节点" class="headerlink" title="步骤 5: 添加工作节点"></a>步骤 5: 添加工作节点</h3><p>在每个工作节点上，使用从主节点获得的<code>kubeadm join</code>命令加入集群。</p>
+<h3 id="步骤-6-验证集群状态"><a href="#步骤-6-验证集群状态" class="headerlink" title="步骤 6: 验证集群状态"></a>步骤 6: 验证集群状态</h3><p>在主节点上，运行以下命令以验证集群是否运行正常：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get nodes</span><br></pre></td></tr></table></figure>
+
+<h3 id="后续步骤"><a href="#后续步骤" class="headerlink" title="后续步骤"></a>后续步骤</h3><ul>
+<li>根据需要安装Helm、Metallb、Ingress Controller等Kubernetes工具。</li>
+<li>部署你的应用程序到Kubernetes集群。</li>
+</ul>
+<p>这些步骤概述了使用kubeadm在Linux上部署Kubernetes集群的基本过程。每个步骤都可能需要根据你的具体环境和需求进行调整。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a target="_blank" rel="noopener" href="https://github.com/sea-whales">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/posts/3927515580/">linux上部署kubernetes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/192071107/">关键路径法简介</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/3061785244/">Kivy笔记</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/posts/1604330648/">Linux多线程下载</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a target="_blank" rel="noopener" href="https://github.com/sea-whales">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:956590645@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a target="_blank" rel="noopener" href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
